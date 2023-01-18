@@ -4,6 +4,7 @@ const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEve
 const { colors, yellow } = require('colors');
 const dotenv = require('dotenv');
 const { channel } = require('node:diagnostics_channel');
+const { Console } = require('node:console');
 dotenv.config();
 
 //============================================================
@@ -63,6 +64,7 @@ client.on('messageCreate', (message) => {
 	  
 	}
   })
+
 
 //===================================
 // Saludo del bot al ser mencionado
@@ -180,9 +182,8 @@ client.on(Events.InteractionCreate, async interaction => {
 	//========================
 
 	await interaction.channel.send({ embeds: [Lore], components: [botonlore] }); 
-	await interaction.user.send({ embeds: [LoreUsuario] })
-
-
+	await interaction.user.send({ embeds: [LoreUsuario] }).catch(console.error)
+	
 });
 
 //=============================================
