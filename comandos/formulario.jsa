@@ -1,0 +1,34 @@
+const { ActionRowBuilder, Events, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	if (interaction.commandName === 'prueba') {
+		const modal = new ModalBuilder()
+			.setCustomId('Prueba')
+			.setTitle('Formulario de prueba');
+
+		const nombreinput = new TextInputBuilder()
+			.setCustomId('nombreinput')
+
+			.setLabel("Cual es tu nombre")
+
+			.setStyle(TextInputStyle.Short);
+
+		const edadinput = new TextInputBuilder()
+			.setCustomId('edadinput')
+			.setLabel("cual es tu edad")
+		    
+			.setStyle(TextInputStyle.Short);
+
+
+		const firstActionRow = new ActionRowBuilder().addComponents(nombreinput);
+		const secondActionRow = new ActionRowBuilder().addComponents(edadinput);
+
+		// Add inputs to the modal
+		modal.addComponents(firstActionRow, secondActionRow);
+
+		// Show the modal to the user
+		await interaction.showModal(modal);
+	}
+});

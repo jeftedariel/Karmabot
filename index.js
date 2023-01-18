@@ -1,8 +1,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require('discord.js');
-const { colors } = require('colors');
+const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEvent, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, embedLength, EmbedBuilder, ButtonBuilder, ButtonStyle, Message, } = require('discord.js');
+const { colors, yellow } = require('colors');
 const dotenv = require('dotenv');
+const { channel } = require('node:diagnostics_channel');
 dotenv.config();
 
 // Esto se encargará de crear una nueva instancia para el bot
@@ -12,6 +13,7 @@ const client = new Client({
 	  GatewayIntentBits.Guilds,
 	  GatewayIntentBits.GuildMessages,
 	  GatewayIntentBits.MessageContent,
+	  
 	],
   })
 
@@ -37,6 +39,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) return;
+	console.log('Comando ejecutado exitosamente')
 
 	try {
 		await command.execute(interaction);
@@ -46,13 +49,25 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-// Moderación 
+// Moderación  Work In Progress
 client.on('messageCreate', (message) => {
-	if (/\bVARIABLE\b/i.test(message.content)) {
+	if (/\bbasura\b/i.test(message.content)) {
 	  setTimeout(() => message.delete(), 1000);
-	  message.reply({ content: 'Secret Pong!', ephemeral: true })
+	  message.reply('WIP')
+	  
 	  
 	}
+  })
+
+
+// Saludo del bot al ser mencionado
+
+  client.on("messageCreate", message => {
+	
+	if (/<@1064599332734652536>/i.test(message.content)) {
+		message.reply('Hola!')
+		} 
+		  
   })
 
 
@@ -63,10 +78,76 @@ client.once(Events.ClientReady, c => {
 	console.log(`Listo!, Bot logeado como ${c.user.tag}`);
 // Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
 	client.user.setPresence({
-		activities: [{ name: `Karmafans`, type: ActivityType.Playing }],
-		status: 'online',
+		activities: [{ name: `/hola 👀`, type: ActivityType.Listening }],
+		status: 'idle',
 	  });
 });
+
+
+//Formulario de Lore
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	if (interaction.commandName === 'prueba') {
+		console.log('formulario enviado por ${user}')
+		const modal = new ModalBuilder()
+			.setCustomId('Prueba')
+			.setTitle('Formulario de prueba');
+
+		const nombreinput = new TextInputBuilder()
+			.setCustomId('nombreinput')
+
+			.setLabel("Cual es tu nombre")
+
+			.setStyle(TextInputStyle.Short);
+
+		const edadinput = new TextInputBuilder()
+			.setCustomId('edadinput')
+			.setLabel("cual es tu edad")
+		    
+			.setStyle(TextInputStyle.Short);
+
+
+		const firstActionRow = new ActionRowBuilder().addComponents(nombreinput);
+		const secondActionRow = new ActionRowBuilder().addComponents(edadinput);
+
+		
+		modal.addComponents(firstActionRow, secondActionRow);
+
+
+		await interaction.showModal(modal);
+	}
+});
+
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isModalSubmit()) return;
+		await interaction.reply({ content: 'Su lore se envió correctamente', ephemeral: true });
+	// Embed que se envia al canal
+
+	const Lore = new EmbedBuilder()
+		.setColor(0x0099FF)
+		.addFields(
+			{ name: 'Nombre', value: interaction.fields.getTextInputValue('nombreinput'), inline: true },
+			{ name: 'Edad', value: interaction.fields.getTextInputValue('edadinput'), inline: true }
+		)
+
+	// Embed que se envia al canal
+
+	const LoreUsuario = new EmbedBuilder()
+		.setColor(0x0099FF)
+		.setTitle('KarmaFans')
+		.setDescription('Su lore fue enviado exitosamente (Aun en desarrollo)')	
+		.setImage('https://i.pinimg.com/originals/e5/3c/8c/e53c8c851f019175cb57cf7e57bb2dd4.gif')
+
+
+	await interaction.channel.send({ embeds: [Lore] });
+	await interaction.user.send({ embeds: [LoreUsuario] })
+
+});
+
+
+
 
 
 // Esto tomará el token desde el archivo .env
