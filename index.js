@@ -90,30 +90,34 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
 	if (interaction.commandName === 'prueba') {
-		console.log('formulario enviado por ${user}')
+		console.log('formulario enviado por', interaction.user.id)
 		const modal = new ModalBuilder()
 			.setCustomId('Prueba')
-			.setTitle('Formulario de prueba');
+			.setTitle('Crea el lore de tu personaje');
 
 		const nombreinput = new TextInputBuilder()
 			.setCustomId('nombreinput')
-
-			.setLabel("Cual es tu nombre")
-
+			.setLabel("¿Cuál es el nombre de tu personaje?")
 			.setStyle(TextInputStyle.Short);
 
 		const edadinput = new TextInputBuilder()
 			.setCustomId('edadinput')
-			.setLabel("cual es tu edad")
-		    
+			.setLabel("¿Que edad tiene tu personaje?")
 			.setStyle(TextInputStyle.Short);
 
+		const loreinput = new TextInputBuilder()
+			.setCustomId('loreinput')
+			.setLabel("Cuentanos tu historia.")    
+			.setStyle(TextInputStyle.Paragraph);		
+			
 
 		const firstActionRow = new ActionRowBuilder().addComponents(nombreinput);
 		const secondActionRow = new ActionRowBuilder().addComponents(edadinput);
+		const thirdActionRow = new ActionRowBuilder().addComponents(loreinput);
+
 
 		
-		modal.addComponents(firstActionRow, secondActionRow);
+		modal.addComponents(firstActionRow, secondActionRow, thirdActionRow);
 
 
 		await interaction.showModal(modal);
@@ -125,12 +129,15 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({ content: 'Su lore se envió correctamente', ephemeral: true });
 	// Embed que se envia al canal
 
+	const user = '<@' + interaction.user.id + '>'; 
 	const Lore = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.addFields(
-			{ name: 'Nombre', value: interaction.fields.getTextInputValue('nombreinput'), inline: true },
-			{ name: 'Edad', value: interaction.fields.getTextInputValue('edadinput'), inline: true }
+			{ name: '---> Nombre <---', value: interaction.fields.getTextInputValue('nombreinput') + ' / ' + user, inline: false },
+			{ name: '---> Edad <---', value: interaction.fields.getTextInputValue('edadinput'), inline: false },
+			{ name: '---> Lore <---', value: interaction.fields.getTextInputValue('loreinput'), inline: false }
 		)
+
 
 	// Embed que se envia al canal
 
@@ -141,8 +148,9 @@ client.on(Events.InteractionCreate, async interaction => {
 		.setImage('https://i.pinimg.com/originals/e5/3c/8c/e53c8c851f019175cb57cf7e57bb2dd4.gif')
 
 
-	await interaction.channel.send({ embeds: [Lore] });
+	await interaction.channel.send({ embeds: [Lore] }); 
 	await interaction.user.send({ embeds: [LoreUsuario] })
+
 
 });
 
