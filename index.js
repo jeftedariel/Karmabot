@@ -158,7 +158,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		.setColor(0x0099FF)
 		.setTitle('KarmaFans')
 		.setDescription('Su lore fue enviado exitosamente (Aun en desarrollo)')	
-		.setImage('https://i.pinimg.com/originals/e5/3c/8c/e53c8c851f019175cb57cf7e57bb2dd4.gif')
+		.setImage('https://media.giphy.com/media/JNySPj69tVEEaaqoa9/giphy.gif')
 
 	
 	//================================
@@ -172,8 +172,6 @@ client.on(Events.InteractionCreate, async interaction => {
 				.setLabel('Crear un lore')
 				.setStyle(ButtonStyle.Primary)
 		)
-	
-
 
 
 	//======================
