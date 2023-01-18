@@ -149,7 +149,6 @@ client.on(Events.InteractionCreate, async interaction => {
 
 
 
-
 // Esto tomará el token desde el archivo .env
 
 client.login(process.env.TOKEN);
