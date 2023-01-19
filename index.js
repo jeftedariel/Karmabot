@@ -66,6 +66,31 @@ client.on('messageCreate', (message) => {
 	}
   })
 
+  client.on('messageCreate', (message) => {
+	if (/\bServidor\b/i.test(message.content)) {
+	  message.react('👀');
+	  const Servidor = new EmbedBuilder()
+	  	.setColor(0x0099FF)
+	  	.setTitle('KarmaFans')
+	  	.setDescription('El servidor official se encuentra en mantenimiento, abriremos pronto')	
+	  	.setImage('https://media.giphy.com/media/ojKMgAPZeerk21Allh/giphy.gif')
+      message.reply({ embeds: [Servidor] });
+	  console.log('[','!'.green,']','Se aviso al usuario', message.author.username, 'sobre el estado del servidor')
+	}
+  })
+
+  client.on('messageCreate', (message) => {
+	if (/\bServer\b/i.test(message.content)) {
+	  message.react('👀');
+	  const Servidor = new EmbedBuilder()
+	  	.setColor(0x0099FF)
+	  	.setTitle('KarmaFans')
+	  	.setDescription('El servidor official se encuentra en mantenimiento, abriremos pronto')	
+	  	.setImage('https://media.giphy.com/media/ojKMgAPZeerk21Allh/giphy.gif')
+	  message.reply({ embeds: [Servidor] });
+	  console.log('[','!'.green,']','Se aviso al usuario', message.author.username, 'sobre el estado del servidor')
+	}
+  })  
 
 //===================================
 // Saludo del bot al ser mencionado
@@ -182,10 +207,18 @@ client.on(Events.InteractionCreate, async interaction => {
 //======================================
 
 	const filter = i => i.customId === 'FormularioLore';
-	const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+	const collector = interaction.channel.createMessageComponentCollector({ filter });
 
 	collector.on('collect', async i => {
-	interaction.execute(prueba)
+		const modal = new ModalBuilder()
+			.setCustomId('AAA')
+			.setTitle('FUNCIONAAA')
+		const ainput = new TextInputBuilder()
+			.setCustomId('ainput')
+			.setLabel('Holaaa')
+			.setStyle(TextInputStyle.Short);
+		const firstActionRow = new ActionRowBuilder().addComponents(ainput);
+		await interaction.showModal(modal)
 	});	
 });
 
