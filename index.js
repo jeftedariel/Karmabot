@@ -5,6 +5,7 @@ const { colors, yellow } = require('colors');
 const dotenv = require('dotenv');
 const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
+const prueba = require('./comandos/prueba');
 dotenv.config();
 
 //============================================================
@@ -41,7 +42,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) return;
-	console.log('[','!'.green,']','El usuario', interaction.user.id, 'ejecutó exitosamente el comando:', interaction.commandName)
+	console.log('[','!'.green,']','El usuario', interaction.user.username, 'ejecutó exitosamente el comando:', interaction.commandName)
 
 	try {
 		await command.execute(interaction);
@@ -98,9 +99,7 @@ client.once(Events.ClientReady, c => {
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
-
 	if (interaction.commandName === 'prueba') {
-		console.log('[','!'.green,']','El usuario', interaction.user.id, 'ejecutó exitosamente el comando:', interaction.commandName)
 		const modal = new ModalBuilder()
 			.setCustomId('Prueba')
 			.setTitle('Crea el lore de tu personaje');
@@ -174,16 +173,20 @@ client.on(Events.InteractionCreate, async interaction => {
 				.setLabel('Crear un lore')
 				.setStyle(ButtonStyle.Primary)
 		)
-
-
-	//======================
-	//Esto envia los embed
-	//al rellenar el fomrulario
-	//========================
-
+	
 	await interaction.channel.send({ embeds: [Lore], components: [botonlore] }); 
 	await interaction.user.send({ embeds: [LoreUsuario] }).catch(console.error)
-	
+
+//======================================
+//Envia el embed al usuario y al canal
+//======================================
+
+	const filter = i => i.customId === 'FormularioLore';
+	const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+
+	collector.on('collect', async i => {
+	interaction.execute(prueba)
+	});	
 });
 
 //=============================================
