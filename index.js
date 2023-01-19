@@ -210,15 +210,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	const collector = interaction.channel.createMessageComponentCollector({ filter });
 
 	collector.on('collect', async i => {
-		const modal = new ModalBuilder()
-			.setCustomId('AAA')
-			.setTitle('FUNCIONAAA')
-		const ainput = new TextInputBuilder()
-			.setCustomId('ainput')
-			.setLabel('Holaaa')
-			.setStyle(TextInputStyle.Short);
-		const firstActionRow = new ActionRowBuilder().addComponents(ainput);
-		await interaction.showModal(modal)
+		
 	});	
 });
 
