@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEvent, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, embedLength, EmbedBuilder, ButtonBuilder, ButtonStyle, Message, } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEvent, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, embedLength, EmbedBuilder, ButtonBuilder, ButtonStyle, Message, StringSelectMenuBuilder  } = require('discord.js');
 const { colors, yellow } = require('colors');
 const dotenv = require('dotenv');
 const { channel } = require('node:diagnostics_channel');
@@ -14,12 +14,12 @@ dotenv.config();
 //===========================================================
 const client = new Client({
 	intents: [
-	  GatewayIntentBits.Guilds,
-	  GatewayIntentBits.GuildMessages,
-	  GatewayIntentBits.MessageContent,
-	  
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+
 	],
-  })
+})
 
 client.commands = new Collection();
 
@@ -33,7 +33,7 @@ for (const file of commandFiles) {
 	if ('data' in command && 'execute' in command) {
 		client.commands.set(command.data.name, command);
 	} else {
-		console.log('[','!'.yellow,']',`Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
+		console.log('[', '!'.yellow, ']', `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
 	}
 }
 
@@ -43,12 +43,12 @@ client.on(Events.InteractionCreate, async interaction => {
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) return;
-	console.log('[','!'.green,']','El usuario', interaction.user.username, 'ejecutó exitosamente el comando:', interaction.commandName)
+	console.log('[', '!'.green, ']', 'El usuario', interaction.user.username, 'ejecutó exitosamente el comando:', interaction.commandName)
 
 	try {
 		await command.execute(interaction);
 	} catch (error) {
-		console.error('[','!'.red,']',error);
+		console.error(error);
 		await interaction.reply({ content: 'Hubo un error tratando de ejecutar ese comando.', ephemeral: true });
 	}
 });
@@ -60,51 +60,66 @@ client.on(Events.InteractionCreate, async interaction => {
 
 client.on('messageCreate', (message) => {
 	if (/\bbasura\b/i.test(message.content)) {
-	  setTimeout(() => message.delete(), 1000);
-	  message.reply('WIP')
-	  
-	  
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		setTimeout(() => message.delete(), 1);
+		message.author.send('Su mensaje se eliminó debido a su contenido.')
 	}
-  })
-
-  client.on('messageCreate', (message) => {
-	if (/\bServidor\b/i.test(message.content)) {
-	  message.react('👀');
-	  const Servidor = new EmbedBuilder()
-	  	.setColor(0x0099FF)
-	  	.setTitle('KarmaFans')
-	  	.setDescription('El servidor official se encuentra en mantenimiento, abriremos pronto')	
-	  	.setImage('https://media.giphy.com/media/ojKMgAPZeerk21Allh/giphy.gif')
-      message.reply({ embeds: [Servidor] });
-	  console.log('[','!'.green,']','Se aviso al usuario', message.author.username, 'sobre el estado del servidor')
+	if (/\bputo\b/i.test(message.content)) {
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		setTimeout(() => message.delete(), 1);
+		message.author.send('Su mensaje se eliminó debido a su contenido.')
 	}
-  })
-
-  client.on('messageCreate', (message) => {
-	if (/\bServer\b/i.test(message.content)) {
-	  message.react('👀');
-	  const Servidor = new EmbedBuilder()
-	  	.setColor(0x0099FF)
-	  	.setTitle('KarmaFans')
-	  	.setDescription('El servidor official se encuentra en mantenimiento, abriremos pronto')	
-	  	.setImage('https://media.giphy.com/media/ojKMgAPZeerk21Allh/giphy.gif')
-	  message.reply({ embeds: [Servidor] });
-	  console.log('[','!'.green,']','Se aviso al usuario', message.author.username, 'sobre el estado del servidor')
+	if (/\bestupido\b/i.test(message.content)) {
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		setTimeout(() => message.delete(), 1);
+		message.author.send('Su mensaje se eliminó debido a su contenido.')
 	}
-  })  
+	if (/\bmierda\b/i.test(message.content)) {
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		setTimeout(() => message.delete(), 1);
+		message.author.send('Su mensaje se eliminó debido a su contenido.')
+	}
+	if (/\bputa\b/i.test(message.content)) {
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		setTimeout(() => message.delete(), 1);
+		message.author.send('Su mensaje se eliminó debido a su contenido.')
+	}
+	if (/\bidiota\b/i.test(message.content)) {
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		setTimeout(() => message.delete(), 1);
+		message.author.send('Su mensaje se eliminó debido a su contenido.')
+	}
+}),
 
-//===================================
-// Saludo del bot al ser mencionado
-//===================================
-  client.on("messageCreate", message => {
 
-	if (/<@1064599332734652536>/i.test(message.content)) {
-		message.author.send("Hola!, prontó se dará más información acerca del bot.");
-		message.author.send("https://media.giphy.com/media/gJ2eADoYgXYVR9xRCY/giphy.gif");
-		console.log('[','!'.green,']','El bot fue mencionado por', message.author.username)
-		} 
-		  
-  })
+
+	//  client.on('messageCreate', (message) => {
+	//	if (/\bServidor\b/i.test(message.content)) {
+	//	  message.react('👀');
+	//	  const Servidor = new EmbedBuilder()
+	//	  	.setColor(0x0099FF)
+	//	  	.setTitle('KarmaFans')
+	//	  	.setDescription('El servidor official se encuentra en mantenimiento, abriremos pronto')	
+	//	  	.setImage('https://media.giphy.com/media/ojKMgAPZeerk21Allh/giphy.gif')
+	//    message.reply({ embeds: [Servidor] });
+	//	  console.log('[','!'.green,']','Se aviso al usuario', message.author.username, 'sobre el estado del servidor')
+	//	}
+	//  })
+
+
+
+	//===================================
+	// Saludo del bot al ser mencionado
+	//===================================
+	client.on("messageCreate", message => {
+
+		if (/<@1064599332734652536>/i.test(message.content)) {
+			message.author.send("Hola!, prontó se dará más información acerca del bot.");
+			message.author.send("https://media.giphy.com/media/gJ2eADoYgXYVR9xRCY/giphy.gif");
+			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+		}
+
+	})
 
 //=================================
 //            ANUNCIOS
@@ -114,28 +129,51 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Hemos actualizado el canal de <#1065709218012876830>, ahora los usuarios que quieran publicar su lore deberán hacerlo con el comando /lore.            Nota: Pueden encontrar un backup temporal de los anteriores lores en <#1060640844853551295>')	
+		.setDescription('Hemos actualizado el canal de <#1065709218012876830>, ahora los usuarios que quieran publicar su lore deberán hacerlo con el comando /lore.            Nota: Pueden encontrar un backup temporal de los anteriores lores en <#1060640844853551295>')
 		.setImage('https://media.giphy.com/media/hWVvANdJADtGHxVK6g/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
 
-	if (/734652536/i.test(message.content)) {
-		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748") 
-		channel.send({ embeds: [Anuncio] }); 
-		console.log('[','!'.green,']','Anuncio enviado exitosamente por', message.author.username)
-		} 
-		  
-  })
+	if (/7346sdaksbdaiub52536/i.test(message.content)) {
+		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
+		channel.send({ embeds: [Anuncio] });
+		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+	}
+
+})
+
+//=================================
+//            AUTOROL
+//==================================
+
+client.on("messageCreate", message => {
+
+	const Anuncio = new EmbedBuilder()
+		.setColor(0x0099FF)
+		.setTitle('Rol')
+		.setDescription('Hola karmadiences!, El usuario <@447447852818628629> está organizando un podcast en el canal de eventos, en este mismo se estará hablando sobre algunas teorias, ideas y parte del lore del servidor, acompañalo en: <#1065753215045476352>')
+		.setImage('https://media.giphy.com/media/xgBVs4YDslyVNEIl9p/giphy.gif')
+		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+
+
+	if (/73465dsfsdfs2536/i.test(message.content)) {
+		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
+		channel.send({ embeds: [Rol] });
+		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+	}
+
+})
+
 //========================================================
 // Esto avisará cuando el bot esté iniciado correctamente.
 //========================================================
 client.once(Events.ClientReady, c => {
-	console.log('[','!'.green,']',`Listo!, Bot logeado como ${c.user.tag}`);
-// Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
+	console.log('[', '!'.green, ']', `Listo!, Bot logeado como ${c.user.tag}`);
+	// Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
 	client.user.setPresence({
 		activities: [{ name: `/hola 👀`, type: ActivityType.Listening }],
 		status: 'idle',
-	  });
+	});
 });
 
 //===========================================
@@ -148,29 +186,33 @@ client.on(Events.InteractionCreate, async interaction => {
 		const modal = new ModalBuilder()
 			.setCustomId('Lore')
 			.setTitle('Crea el lore de tu personaje');
+			
 
 		const nombreinput = new TextInputBuilder()
 			.setCustomId('nombreinput')
 			.setLabel("¿Cuál es el nombre de tu personaje?")
-			.setStyle(TextInputStyle.Short);
+			.setStyle(TextInputStyle.Short)
+			.setMaxLength(20);
 
 		const edadinput = new TextInputBuilder()
 			.setCustomId('edadinput')
 			.setLabel("¿Que edad tiene tu personaje?")
+			.setMaxLength(5)
 			.setStyle(TextInputStyle.Short);
 
 		const loreinput = new TextInputBuilder()
 			.setCustomId('loreinput')
-			.setLabel("Cuentanos tu historia.")    
-			.setStyle(TextInputStyle.Paragraph);		
-			
+			.setLabel("Cuentanos tu historia.")
+			.setMaxLength(3500)
+			.setStyle(TextInputStyle.Paragraph);
+
 
 		const firstActionRow = new ActionRowBuilder().addComponents(nombreinput);
 		const secondActionRow = new ActionRowBuilder().addComponents(edadinput);
 		const thirdActionRow = new ActionRowBuilder().addComponents(loreinput);
 
 
-		
+
 		modal.addComponents(firstActionRow, secondActionRow, thirdActionRow);
 
 
@@ -180,21 +222,30 @@ client.on(Events.InteractionCreate, async interaction => {
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isModalSubmit()) return;
-		await interaction.reply({ content: 'Su lore se envió correctamente', ephemeral: true });
+	await interaction.reply({ content: 'Su lore se envió correctamente', ephemeral: true });
 
 
 	//=============================
 	//Embed para el canal de Lore
 	//=============================
 
-	const user = '<@' + interaction.user.id + '>'; 
+	const user = '<@' + interaction.user.id + '>';
+	const nombre = interaction.fields.getTextInputValue('nombreinput') + ' / ' + user
+	const edad = interaction.fields.getTextInputValue('edadinput')
+	const lore = interaction.fields.getTextInputValue('loreinput')
+
+
 	const Lore = new EmbedBuilder()
 		.setColor(0x0099FF)
-		.addFields(
-			{ name: '---> Nombre <---', value: interaction.fields.getTextInputValue('nombreinput') + ' / ' + user, inline: false },
-			{ name: '---> Edad <---', value: interaction.fields.getTextInputValue('edadinput'), inline: false },
-			{ name: '---> Lore <---', value: interaction.fields.getTextInputValue('loreinput'), inline: false }
-		)
+		.setDescription("**---> Nombre <---**" + "\n" + nombre + "\n**---> Edad <---**" + "\n" + edad + '\n**---> Lore <---**' + "\n" + lore )
+		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+
+
+//		.addFields(
+//			{ name: '---> Nombre <---', value: interaction.fields.getTextInputValue('nombreinput') + ' / ' + user, inline: false },
+//			{ name: '---> Edad <---', value: interaction.fields.getTextInputValue('edadinput'), inline: false },
+//			{ name: '---> Lore <---', value: interaction.fields.getTextInputValue('loreinput'), inline: false }
+//		)
 
 	//==============================
 	// Embed que se envia al usuario
@@ -203,19 +254,18 @@ client.on(Events.InteractionCreate, async interaction => {
 	const LoreUsuario = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('KarmaFans')
-		.setDescription('Su lore fue enviado exitosamente (Aun en desarrollo)')	
+		.setDescription('Su lore fue enviado exitosamente')
 		.setImage('https://media.giphy.com/media/JNySPj69tVEEaaqoa9/giphy.gif')
+		
 
-	
-//======================================
-//Envia el embed al usuario y al canal
-//======================================
 
-	const channel = client.channels.cache.find(channel => channel.id === "1065709218012876830") 
-		channel.send({ embeds: [Lore] }); 
+	//======================================
+	//Envia el embed al usuario y al canal
+	//======================================
+
+	const channel = client.channels.cache.find(channel => channel.id === "1065709218012876830")
+	channel.send({ embeds: [Lore] });
 	await interaction.user.send({ embeds: [LoreUsuario] }).catch(console.error)
-
-
 });
 
 //=============================================
