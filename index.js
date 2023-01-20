@@ -5,6 +5,7 @@ const { colors, yellow } = require('colors');
 const dotenv = require('dotenv');
 const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
+const Sequelize = require('sequelize');
 //const prueba = require('./comandos/prueba');
 const { MessageChannel } = require('node:worker_threads');
 dotenv.config();
@@ -21,6 +22,30 @@ const client = new Client({
 	],
 })
 
+
+//====================================
+//Inicializa la base de datos
+//====================================
+
+const sequelize = new Sequelize('database', 'user', 'password', {
+	host: 'localhost',
+	dialect: 'sqlite',
+	logging: false,
+	// SQLite only
+	storage: 'database.sqlite',
+});
+
+const Tags = sequelize.define('tags', {
+	palabras: {
+		type: Sequelize.STRING,
+		unique: true,
+	}
+});
+
+
+//=====================================
+//Carga los / desde la carpeta comandos
+//=====================================
 client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, 'comandos');
@@ -54,41 +79,71 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 
+
+
+
+
 //=======================================
 //Sistema de Moderación  Work In Progress
 //=======================================
 
 client.on('messageCreate', (message) => {
-	if (/\bbasura\b/i.test(message.content)) {
-		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
-		setTimeout(() => message.delete(), 1);
-		message.author.send('Su mensaje se eliminó debido a su contenido.')
-	}
+
+	const Aviso = new EmbedBuilder()
+		.setColor(0x0099FF)
+		.setTitle('Aviso')
+		.setDescription('Su mensaje se eliminó debido a que incluia lenguaje inadecuado, ayudanos a mantener un ambiente agradable.')
+		.setImage('https://media.giphy.com/media/7VbE2HvYu1QUmoVQlt/giphy.gif')
+		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+
+//	Sequelize.all('SELECT palabras FROM tags').then(rows => {
+//		var palabras = '';
+//		rows.forEach(function (row) {
+//			descr += `${palabras}`
+//		})
+//
+//	if (`${palabras}`.test(message.content)) {
+//		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+//		setTimeout(() => message.delete(), 1);
+//		message.author.send({ embeds: [Aviso] }).catch(console.error)
+//	}
+
 	if (/\bputo\b/i.test(message.content)) {
 		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
 		setTimeout(() => message.delete(), 1);
-		message.author.send('Su mensaje se eliminó debido a su contenido.')
+		message.author.send({ embeds: [Aviso] }).catch(console.error)
 	}
 	if (/\bestupido\b/i.test(message.content)) {
 		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
 		setTimeout(() => message.delete(), 1);
-		message.author.send('Su mensaje se eliminó debido a su contenido.')
+		message.author.send({ embeds: [Aviso] }).catch(console.error)
 	}
 	if (/\bmierda\b/i.test(message.content)) {
 		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
 		setTimeout(() => message.delete(), 1);
-		message.author.send('Su mensaje se eliminó debido a su contenido.')
+		message.author.send({ embeds: [Aviso] }).catch(console.error)
 	}
 	if (/\bputa\b/i.test(message.content)) {
 		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
 		setTimeout(() => message.delete(), 1);
-		message.author.send('Su mensaje se eliminó debido a su contenido.')
+		message.author.send({ embeds: [Aviso] }).catch(console.error)
 	}
 	if (/\bidiota\b/i.test(message.content)) {
 		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
 		setTimeout(() => message.delete(), 1);
-		message.author.send('Su mensaje se eliminó debido a su contenido.')
+		message.author.send({ embeds: [Aviso] }).catch(console.error)
 	}
+	if (/\bimbecil\b/i.test(message.content)) {
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		setTimeout(() => message.delete(), 1);
+		message.author.send({ embeds: [Aviso] }).catch(console.error)
+	}
+	if (/\bretrasado\b/i.test(message.content)) {
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		setTimeout(() => message.delete(), 1);
+		message.author.send({ embeds: [Aviso] }).catch(console.error)
+	}
+	
 }),
 
 
@@ -168,6 +223,7 @@ client.on("messageCreate", message => {
 // Esto avisará cuando el bot esté iniciado correctamente.
 //========================================================
 client.once(Events.ClientReady, c => {
+	Tags.sync();
 	console.log('[', '!'.green, ']', `Listo!, Bot logeado como ${c.user.tag}`);
 	// Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
 	client.user.setPresence({
