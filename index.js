@@ -1,12 +1,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const Sequelize = require('sequelize');
+const dotenv = require('dotenv');
+//const mcping = require('mcping-js')
+//const server = new mcping.MinecraftServer('', 25565)
 const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEvent, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, embedLength, EmbedBuilder, ButtonBuilder, ButtonStyle, Message, StringSelectMenuBuilder  } = require('discord.js');
 const { colors, yellow } = require('colors');
-const dotenv = require('dotenv');
 const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
-const Sequelize = require('sequelize');
-//const prueba = require('./comandos/prueba');
 const { MessageChannel } = require('node:worker_threads');
 dotenv.config();
 
@@ -25,7 +26,7 @@ const client = new Client({
 
 //====================================
 //Inicializa la base de datos
-//====================================
+//==================================== 
 
 const sequelize = new Sequelize('database', 'user', 'password', {
 	host: 'localhost',
@@ -184,8 +185,8 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Hemos actualizado el canal de <#1065709218012876830>, ahora los usuarios que quieran publicar su lore deberán hacerlo con el comando /lore.            Nota: Pueden encontrar un backup temporal de los anteriores lores en <#1060640844853551295>')
-		.setImage('https://media.giphy.com/media/hWVvANdJADtGHxVK6g/giphy.gif')
+		.setDescription('Hola a todos!,hoy posiblemente se habrá una beta abierta al público, será por horas o días dependiendo el ritmo del servidor.')
+		.setImage('https://media.giphy.com/media/1oKQqphQDlpb2rHUpZ/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
 
@@ -193,6 +194,7 @@ client.on("messageCreate", message => {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
 		channel.send({ embeds: [Anuncio] });
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+		channel.send('@everyone');
 	}
 
 })
