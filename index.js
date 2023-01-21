@@ -189,8 +189,8 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('La ip para acceder al servidor temporal es la siguente: `karmafans.holy.gg` \n Recuerden que este servidor estara disponible por un tiempo limitado y su objetivo es unicamente para hacer una prueba de rendimiento.')
-		.setImage('https://media.giphy.com/media/H3wnI2hKkHBDwQPICs/giphy.gif')
+		.setDescription('Hola! ante todo pedimos disculpas por los incovenientes que se han presentado con el servidor. El problema que se tiene es con el host que está alojado el servidor de KarmaFans, se tuvo que reiniciar todo el panel del servidor hasta reiniciar el mismo servidor pero el problema persiste.... Por lo que se ha decidido migrar el servidor a un sistema más robusto, pronto recibiran noticias sobre el futuro del servidor.')
+		.setImage('https://media.giphy.com/media/hM4OekkycahSas09bD/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	const anuncioboton = new ActionRowBuilder()
 		.addComponents(
@@ -201,7 +201,7 @@ client.on("messageCreate", message => {
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		channel.send({ embeds: [Anuncio], components: [anuncioboton] });
+		channel.send({ embeds: [Anuncio] });
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
 		channel.send('@everyone');
 	}
