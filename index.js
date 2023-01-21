@@ -10,6 +10,7 @@ const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
 dotenv.config();
+require('./');
 
 //============================================================
 // Esto se encargará de crear una nueva instancia para el bot
@@ -100,7 +101,7 @@ client.on('messageCreate', (message) => {
 //	Sequelize.all('SELECT palabras FROM tags').then(rows => {
 //		var palabras = '';
 //		rows.forEach(function (row) {
-//			descr += `${palabras}`
+//		descr += `${palabras}`
 //		})
 //
 //	if (`${palabras}`.test(message.content)) {
@@ -109,7 +110,7 @@ client.on('messageCreate', (message) => {
 //		message.author.send({ embeds: [Aviso] }).catch(console.error)
 //	}
 
-	if (/\bputo\b/i.test(message.content)) {
+	if (/\bbasura\b/i.test(message.content)) {
 		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
 		setTimeout(() => message.delete(), 1);
 		message.author.send({ embeds: [Aviso] }).catch(console.error)
@@ -170,8 +171,11 @@ client.on('messageCreate', (message) => {
 	client.on("messageCreate", message => {
 
 		if (/<@1064599332734652536>/i.test(message.content)) {
-			message.author.send("Hola!, prontó se dará más información acerca del bot.");
-			message.author.send("https://media.giphy.com/media/gJ2eADoYgXYVR9xRCY/giphy.gif");
+			const Anuncio = new EmbedBuilder()
+				.setColor(0x0099FF)
+				.setDescription('Hola!, de momento no puedo responder mensajes, quizá pronto...')
+				.setImage('https://media.giphy.com/media/gJ2eADoYgXYVR9xRCY/giphy.gif')
+			message.react('👀');
 			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
 		}
 
@@ -185,14 +189,19 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Hola a todos!,hoy posiblemente se habrá una beta abierta al público, será por horas o días dependiendo el ritmo del servidor.')
-		.setImage('https://media.giphy.com/media/1oKQqphQDlpb2rHUpZ/giphy.gif')
+		.setDescription('La ip para acceder al servidor temporal es la siguente: `karmafans.holy.gg` \n Recuerden que este servidor estara disponible por un tiempo limitado y su objetivo es unicamente para hacer una prueba de rendimiento.')
+		.setImage('https://media.giphy.com/media/H3wnI2hKkHBDwQPICs/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
-
-
-	if (/7346sdaksbdaiub52536/i.test(message.content)) {
+	const anuncioboton = new ActionRowBuilder()
+		.addComponents(
+			new ButtonBuilder()
+				.setLabel('Descargar Modpack')
+				.setURL("https://www.mediafire.com/file/6s6k4yvjk3r1q3o/ModsTest_5.0.rar/file")
+				.setStyle(ButtonStyle.Link),
+		)
+	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		channel.send({ embeds: [Anuncio] });
+		channel.send({ embeds: [Anuncio], components: [anuncioboton] });
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
 		channel.send('@everyone');
 	}
@@ -205,7 +214,7 @@ client.on("messageCreate", message => {
 
 client.on("messageCreate", message => {
 
-	const Anuncio = new EmbedBuilder()
+	const Ping = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Rol')
 		.setDescription('Hola karmadiences!, El usuario <@447447852818628629> está organizando un podcast en el canal de eventos, en este mismo se estará hablando sobre algunas teorias, ideas y parte del lore del servidor, acompañalo en: <#1065753215045476352>')
@@ -215,8 +224,8 @@ client.on("messageCreate", message => {
 
 	if (/73465dsfsdfs2536/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		channel.send({ embeds: [Rol] });
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+		interaction.user.send({ embeds: [Ping] }).catch(console.error)
 	}
 
 })
