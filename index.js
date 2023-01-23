@@ -189,8 +189,8 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Hola! ante todo pedimos disculpas por los incovenientes que se han presentado con el servidor. El problema que se tiene es con el host que está alojado el servidor de KarmaFans, se tuvo que reiniciar todo el panel del servidor hasta reiniciar el mismo servidor pero el problema persiste.... Por lo que se ha decidido migrar el servidor a un sistema más robusto, pronto recibiran noticias sobre el futuro del servidor.')
-		.setImage('https://media.giphy.com/media/hM4OekkycahSas09bD/giphy.gif')
+		.setDescription('Hola!, como ya muchos sabrán estamos cambiando de host y de infraestructura una más potente para alojar el servidor allí, esto podrá demorar algunos dias entonces hemos habilitado un servidor `Survival Vanilla 1.19.3` para todos aquellos que quieran jugar algo mientras nos preparamos, la ip ya la conocen y es la siguente: `karmafans.holy.gg`', '\n Pd: Gracias por tenernos paciencia:)')
+		.setImage('https://media.giphy.com/media/QLA1OA4divrPKIqfOk/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	const anuncioboton = new ActionRowBuilder()
 		.addComponents(
@@ -238,7 +238,7 @@ client.once(Events.ClientReady, c => {
 	console.log('[', '!'.green, ']', `Listo!, Bot logeado como ${c.user.tag}`);
 	// Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
 	client.user.setPresence({
-		activities: [{ name: `/hola 👀`, type: ActivityType.Listening }],
+		activities: [{ name: `IA en Mantenimiento⚡🔧`, type: ActivityType.Watching }],
 		status: 'idle',
 	});
 });
