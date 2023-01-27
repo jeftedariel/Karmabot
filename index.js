@@ -170,17 +170,21 @@ client.on('messageCreate', (message) => {
 	//===================================
 	client.on("messageCreate", message => {
 
-		if (/<@1064599332734652536>/i.test(message.content)) {
-			const Anuncio = new EmbedBuilder()
-				.setColor(0x0099FF)
-				.setDescription('Hola!, de momento no puedo responder mensajes, quizá pronto...')
-				.setImage('https://media.giphy.com/media/gJ2eADoYgXYVR9xRCY/giphy.gif')
+		if (/\bkarmabot\b/i.test(message.content)) {
 			message.react('👀');
 			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
 		}
 
 	})
 
+	client.on("messageCreate", message => {
+
+		if (/<@1064599332734652536>/i.test(message.content)) {
+			message.react('👀');
+			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+		}
+
+	})	
 //=================================
 //            ANUNCIOS
 //==================================
@@ -189,7 +193,7 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Hola!, como ya muchos sabrán estamos cambiando de host y de infraestructura una más potente para alojar el servidor allí, esto podrá demorar algunos dias entonces hemos habilitado un servidor `Survival Vanilla 1.19.3` para todos aquellos que quieran jugar algo mientras nos preparamos, la ip ya la conocen y es la siguente: `karmafans.holy.gg`', '\n Pd: Gracias por tenernos paciencia:)')
+		.setDescription('Hola!', '\n Pronto se dará inicio al servidor oficial de Karmafans, el cual contará con cuatro reinos o clanes a los cuales los usuarios podrán unirse, los diferentes reinos tendrán su respectivo lider, los cuales son', '\n <@239413170404458496>', '\n <@404255695144484865>', '\n <@729817583926247465>', '\n <@416419479245815810>')
 		.setImage('https://media.giphy.com/media/QLA1OA4divrPKIqfOk/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	const anuncioboton = new ActionRowBuilder()
@@ -201,11 +205,12 @@ client.on("messageCreate", message => {
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		channel.send({ embeds: [Anuncio] });
+		//channel.send({ embeds: [Anuncio] });
+		//channel.send('@everyone');
+		message.author.send({ embeds: [anuncio] }).catch(console.error)
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
-		channel.send('@everyone');
+		
 	}
-
 })
 
 //=================================
