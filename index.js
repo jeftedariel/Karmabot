@@ -193,7 +193,7 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Hola!', '\n Pronto se dará inicio al servidor oficial de Karmafans, el cual contará con cuatro reinos o clanes a los cuales los usuarios podrán unirse, los diferentes reinos tendrán su respectivo lider, los cuales son', '\n <@239413170404458496>', '\n <@404255695144484865>', '\n <@729817583926247465>', '\n <@416419479245815810>')
+		.setDescription('Hola! \n Pronto se dará inicio al servidor oficial de Karmafans, el cual contará con cuatro reinos o clanes a los cuales los usuarios podrán unirse, los diferentes reinos tendrán su respectivo lider, los cuales son \n <@239413170404458496> \n <@404255695144484865> \n <@729817583926247465> \n <@416419479245815810>')
 		.setImage('https://media.giphy.com/media/QLA1OA4divrPKIqfOk/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	const anuncioboton = new ActionRowBuilder()
@@ -207,7 +207,7 @@ client.on("messageCreate", message => {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
 		//channel.send({ embeds: [Anuncio] });
 		//channel.send('@everyone');
-		message.author.send({ embeds: [anuncio] }).catch(console.error)
+		message.author.send({ embeds: [Anuncio] }).catch(console.error)
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
 		
 	}
