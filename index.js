@@ -110,6 +110,7 @@ client.on('messageCreate', (message) => {
 //		message.author.send({ embeds: [Aviso] }).catch(console.error)
 //	}
 
+
 	if (/\bbasura\b/i.test(message.content)) {
 		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
 		setTimeout(() => message.delete(), 1);
@@ -192,20 +193,20 @@ client.on("messageCreate", message => {
 
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
-		.setTitle('Anuncio')
-		.setDescription('Hola! Pronto se dará inicio al servidor oficial de Karmafans, este se mantendrá en la 1.12.2 para no empeorar la experiencia de los jugadores que tienen equipos menos potentes, el servidor contará con cuatro reinos o clanes a los cuales los usuarios podrán elegir en cual unirse, los diferentes reinos tendrán su respectivo lider, los cuales serán <@239413170404458496>, <@404255695144484865>, <@729817583926247465>, <@416419479245815810>' + '\n' + 'Cada reino podrá organizar enfrentamientos de pvp contra otros, saqueos y demás, las reglas se compartirán en los primeros dias del servidor. ')
-		.setImage('https://media.giphy.com/media/0K3JVkZucaU49AEIO4/giphy.gif')
+		.setTitle('Evento PVP 1.8')
+		.setDescription('Se está organizando un evento de PVP en Minecraft, tendrán disponible un sitio para ver los resultados de los enfrentamientos y el orden de los proximos combates.')
+		.setImage('https://media.giphy.com/media/Qa4KtB03ixJrmHw7Ti/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
-	const anuncioboton = new ActionRowBuilder()
+	const Anuncioboton = new ActionRowBuilder()
 		.addComponents(
 			new ButtonBuilder()
-				.setLabel('Descargar Modpack')
-				.setURL("https://www.mediafire.com/file/6s6k4yvjk3r1q3o/ModsTest_5.0.rar/file")
+				.setLabel('Ver pagina')
+				.setURL("https://challonge.com/es/karmafans_TO_Oficial")
 				.setStyle(ButtonStyle.Link),
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
-		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		channel.send({ embeds: [Anuncio] });
+		const channel = client.channels.cache.find(channel => channel.id === "1068696259206058037")
+		channel.send({ embeds: [Anuncio], components: [Anuncioboton] });
 		channel.send('@everyone');	
 		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
 		message.delete()
