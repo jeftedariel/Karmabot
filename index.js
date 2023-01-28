@@ -193,8 +193,8 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Hola! Pronto se dará inicio al servidor oficial de Karmafans, el cual contará con cuatro reinos o clanes a los cuales los usuarios podrán unirse, los diferentes reinos tendrán su respectivo lider, los cuales son <@239413170404458496>, <@404255695144484865>, <@729817583926247465>, <@416419479245815810>')
-		.setImage('https://media.giphy.com/media/QLA1OA4divrPKIqfOk/giphy.gif')
+		.setDescription('Hola! Pronto se dará inicio al servidor oficial de Karmafans, este se mantendrá en la 1.12.2 para no empeorar la experiencia de los jugadores que tienen equipos menos potentes, el servidor contará con cuatro reinos o clanes a los cuales los usuarios podrán elegir en cual unirse, los diferentes reinos tendrán su respectivo lider, los cuales serán <@239413170404458496>, <@404255695144484865>, <@729817583926247465>, <@416419479245815810>' + '\n' + 'Cada reino podrá organizar enfrentamientos de pvp contra otros, saqueos y demás, las reglas se compartirán en los primeros dias del servidor. ')
+		.setImage('https://media.giphy.com/media/0K3JVkZucaU49AEIO4/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	const anuncioboton = new ActionRowBuilder()
 		.addComponents(
@@ -205,9 +205,10 @@ client.on("messageCreate", message => {
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		//channel.send({ embeds: [Anuncio] });
-		//channel.send('@everyone');
-		message.author.send({ embeds: [Anuncio] }).catch(console.error)
+		channel.send({ embeds: [Anuncio] });
+		channel.send('@everyone');	
+		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
+		message.delete()
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
 		
 	}
