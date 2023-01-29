@@ -96,7 +96,7 @@ client.on('messageCreate', (message) => {
 	const Aviso = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Aviso')
-		.setDescription('Su mensaje se eliminó debido a que incluia lenguaje o hablaba sobre temas inadecuados o que no están permitidos este servidor, ayudanos a mantener un ambiente agradable. Para más información o consultas puedes abrir un ticket')
+		.setDescription('Su mensaje se eliminó debido a que incluia lenguaje o temas que no están permitidos en este servidor, ayudanos a mantener un ambiente agradable.' + '\n' + 'Para más información o consultas puedes abrir un ticket')
 		.setImage('https://media.giphy.com/media/7VbE2HvYu1QUmoVQlt/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
