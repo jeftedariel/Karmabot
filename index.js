@@ -11,6 +11,7 @@ const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
 
+
 dotenv.config();
 require('./');
 
@@ -63,6 +64,8 @@ for (const file of commandFiles) {
 		client.commands.set(command.data.name, command);
 	} else {
 		console.log('[', '!'.yellow, ']', `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
+		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		log.send('[ ! ] ' + `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);	
 	}
 }
 
@@ -73,6 +76,8 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	if (!command) return;
 	console.log('[', '!'.green, ']', 'El usuario', interaction.user.username, 'ejecutó exitosamente el comando:', interaction.commandName)
+	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+	log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó exitosamente el comando: ' + interaction.commandName);	
 
 	try {
 		await command.execute(interaction);
@@ -88,11 +93,10 @@ client.on(Events.InteractionCreate, async interaction => {
 
 
 //=======================================
-//Sistema de Moderación  Work In Progress
+//     Sistema de Moderación V1.1
 //=======================================
 
 client.on('messageCreate', (message) => {
-
 	const Aviso = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Aviso')
@@ -100,48 +104,20 @@ client.on('messageCreate', (message) => {
 		.setImage('https://media.giphy.com/media/7VbE2HvYu1QUmoVQlt/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
-//	Sequelize.all('SELECT palabras FROM tags').then(rows => {
-//		var palabras = '';
-//		rows.forEach(function (row) {
-//		descr += `${palabras}`
-//		})
-//
-//	if (`${palabras}`.test(message.content)) {
-//		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
-//		setTimeout(() => message.delete(), 1);
-//		message.author.send({ embeds: [Aviso] }).catch(console.error)
-//	}
-
-
 	let check = false
 	for (var palabra in blacklisted) {
-		if (message.content.toLowerCase().includes(blacklisted[palabra].toLowerCase())) check = true
+		if (!message.author.bot) {
+			if (message.content.toLowerCase() === (blacklisted[palabra].toLowerCase())) check = true
+		}
 	}
 	if (check) {
 		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		log.send('[ ! ] ' + 'Se eliminó un mensaje del usuario ' + message.author.username + ' el cual contenia: ' + message.content);
 		setTimeout(() => message.delete(), 1);
 		message.author.send({ embeds: [Aviso] }).catch(console.error)
 	};
-
-
 }),
-
-
-
-	//  client.on('messageCreate', (message) => {
-	//	if (/\bServidor\b/i.test(message.content)) {
-	//	  message.react('👀');
-	//	  const Servidor = new EmbedBuilder()
-	//	  	.setColor(0x0099FF)
-	//	  	.setTitle('KarmaFans')
-	//	  	.setDescription('El servidor official se encuentra en mantenimiento, abriremos pronto')	
-	//	  	.setImage('https://media.giphy.com/media/ojKMgAPZeerk21Allh/giphy.gif')
-	//    message.reply({ embeds: [Servidor] });
-	//	  console.log('[','!'.green,']','Se aviso al usuario', message.author.username, 'sobre el estado del servidor')
-	//	}
-	//  })
-
-
 
 	//===================================
 	// Saludo del bot al ser mencionado
@@ -149,8 +125,12 @@ client.on('messageCreate', (message) => {
 	client.on("messageCreate", message => {
 
 		if (/\bkarmabot\b/i.test(message.content)) {
-			message.react('👀');
-			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+			if (!message.author.bot) {
+				message.react('👀');
+				console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+				log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
+			}
 		}
 
 	})
@@ -158,8 +138,12 @@ client.on('messageCreate', (message) => {
 	client.on("messageCreate", message => {
 
 		if (/<@1064599332734652536>/i.test(message.content)) {
-			message.react('👀');
-			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+			if (!message.author.bot) {
+				message.react('👀');
+				console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+				log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
+			}
 		}
 
 	})	
@@ -188,6 +172,8 @@ client.on("messageCreate", message => {
 		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
 		message.delete()
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
 		
 	}
 })
@@ -220,6 +206,8 @@ client.on("messageCreate", message => {
 client.once(Events.ClientReady, c => {
 	Tags.sync();
 	console.log('[', '!'.green, ']', `Listo!, Bot logeado como ${c.user.tag}`);
+	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+	log.send('[ ! ] ' + `Listo!, Bot logeado como ${c.user.tag}`);	
 	// Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
 	client.user.setPresence({
 		activities: [{ name: `IA en Mantenimiento⚡🔧`, type: ActivityType.Watching }],
@@ -317,6 +305,8 @@ client.on(Events.InteractionCreate, async interaction => {
 	const channel = client.channels.cache.find(channel => channel.id === "1065709218012876830")
 	channel.send({ embeds: [Lore] });
 	await interaction.user.send({ embeds: [LoreUsuario] }).catch(console.error)
+	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+	log.send('[ ! ] ' + 'El usuario ' + '<@' + interaction.user.id + '>' + 'Envió exitosamente su lore');
 });
 
 //=============================================
