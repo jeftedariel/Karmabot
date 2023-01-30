@@ -166,7 +166,7 @@ client.on("messageCreate", message => {
 				.setStyle(ButtonStyle.Link),
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
-		const channel = client.channels.cache.find(channel => channel.id === "1068696259206058037")
+		const channel = client.channels.cache.find(channel => channel.id === "1063123668827377737")
 		channel.send({ embeds: [Anuncio], components: [Anuncioboton] });
 		channel.send('@everyone');	
 		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
