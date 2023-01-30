@@ -154,15 +154,15 @@ client.on("messageCreate", message => {
 
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
-		.setTitle('Evento PVP 1.8')
-		.setDescription('Se está organizando un evento de PVP en Minecraft, tendrán disponible un sitio para ver los resultados de los enfrentamientos y el orden de los proximos combates.')
-		.setImage('https://media.giphy.com/media/Qa4KtB03ixJrmHw7Ti/giphy.gif')
+		.setTitle('Anuncio')
+		.setDescription('Ultimo modpack disponible para acceder al servidor')
+		//.setImage('https://media.giphy.com/media/Qa4KtB03ixJrmHw7Ti/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	const Anuncioboton = new ActionRowBuilder()
 		.addComponents(
 			new ButtonBuilder()
-				.setLabel('Ver pagina')
-				.setURL("https://challonge.com/es/karmafans_TO_Oficial")
+				.setLabel('Descargar')
+				.setURL("https://www.dropbox.com/s/1a2zdu9cqqo75es/mods.rar?dl=1")
 				.setStyle(ButtonStyle.Link),
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
