@@ -103,31 +103,31 @@ client.on('messageCreate', (message) => {
 	//===================================
 	// Saludo del bot al ser mencionado
 	//===================================
-	client.on("messageCreate", message => {
-
-		if (/\bkarmabot\b/i.test(message.content)) {
-			if (!message.author.bot) {
-				message.react('👀');
-				console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
-				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
-			}
-		}
-
-	})
-
-client.on("messageCreate", message => {
-
-	if (/<@1064599332734652536>/i.test(message.content)) {
-		if (!message.author.bot) {
-			message.react('👀');
-			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
-			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-			log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
-		}
-	}
-
-})
+//	client.on("messageCreate", message => {
+//
+//		if (/\bkarmabot\b/i.test(message.content)) {
+//			if (!message.author.bot) {
+//				message.react('👀');
+//				console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+//				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+//				log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
+//			}
+//		}
+//
+//	})
+//
+//client.on("messageCreate", message => {
+//
+//	if (/<@1064599332734652536>/i.test(message.content)) {
+//		if (!message.author.bot) {
+//			message.react('👀');
+//			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+//			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+//			log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
+//		}
+//	}
+//
+//})
 
 
 
