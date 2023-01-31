@@ -182,6 +182,58 @@ client.on("messageCreate", message => {
 })
 
 //=================================
+//            AUTOROL CLAN
+//==================================
+client.on("messageCreate", message => {
+
+	const Anuncio = new EmbedBuilder()
+		.setColor(0x0099FF)
+		.setTitle('Anuncio')
+		.setDescription('')
+		.setImage('https://media.giphy.com/media/ab1sTJtCLHSuILnBGX/giphy.gif')
+		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+	const row = new ActionRowBuilder()
+	.addComponents(
+		new StringSelectMenuBuilder()
+			.setCustomId('select')
+			.setPlaceholder('Nothing selected')
+			.addOptions(
+				{
+					label: 'El reino de Lautaco',
+					description: 'Aca va la descripcion',
+					value: 'first_option',
+				},
+				{
+					label: 'El reino de Master',
+					description: 'Aca va la descripcion',
+					value: 'second_option',
+				},
+				{
+					label: 'El reino de WarGhosts',
+					description: 'Aca va la descripcion',
+					value: 'third_option',
+				},
+				{
+					label: 'El reino de ZyderNate',
+					description: 'Aca va la descripcion',
+					value: 'fourth_option',
+				},
+			),
+	);
+	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
+		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
+		channel.send({ embeds: [Anuncio] });
+		channel.send('@everyone');	
+		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
+		message.delete()
+		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
+		
+	}
+	
+})
+//=================================
 //            AUTOROL
 //==================================
 
@@ -213,7 +265,7 @@ client.once(Events.ClientReady, c => {
 	log.send('[ ! ] ' + `Listo!, Bot logeado como ${c.user.tag}`);	
 	// Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
 	client.user.setPresence({
-		activities: [{ name: `IA en Mantenimiento⚡🔧`, type: ActivityType.Watching }],
+		activities: [{ name: `a Jeft programar👀`, type: ActivityType.Watching }],
 		status: 'idle',
 	});
 });
