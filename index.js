@@ -239,15 +239,15 @@ client.on(Events.InteractionCreate, async interaction => {
 		if (choice == 'first_option') {
 			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
 				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
-				console.log('[', '!'.yellow, ']', 'El usuario ', message.author.username, ' intento entrar a un reino pero ya pertenecia a otro')
+				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ', message.author.username, ' intento entrar a un reino pero ya pertenecia a otro');
+				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' intento entrar a un reino pero ya pertenecia a otro');
 			}
 			else {
 				member.roles.add(rollautaco)
-				console.log('[', '!'.green, ']', 'El usuario ', message.author.username, ' entró a un reino y recibió su rol correctamente')
+				console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' entró a un reino y recibió su rol correctamente')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ', message.author.username, ' entró a un reino y recibió su rol correctamente');
+				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' entró a un reino y recibió su rol correctamente');
 				await interaction.showModal(nick);
 			}
 		}
@@ -255,15 +255,15 @@ client.on(Events.InteractionCreate, async interaction => {
 		else if (choice == 'second_option') {
 			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
 				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
-				console.log('[', '!'.yellow, ']', 'El usuario ', message.author.username, ' intento entrar a un reino pero ya pertenecia a otro')
+				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ', message.author.username, ' intento entrar a un reino pero ya pertenecia a otro');
+				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' intento entrar a un reino pero ya pertenecia a otro');
 			}
 			else {
 				member.roles.add(rolmaster)
-				console.log('[', '!'.green, ']', 'El usuario ', message.author.username, ' entró a un reino y recibió su rol correctamente')
+				console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' entró a un reino y recibió su rol correctamente')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ', message.author.username, ' entró a un reino y recibió su rol correctamente');
+				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' entró a un reino y recibió su rol correctamente');
 				await interaction.showModal(nick);
 			}
 		}
@@ -271,15 +271,15 @@ client.on(Events.InteractionCreate, async interaction => {
 		else if (choice == 'third_option') {
 			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
 				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
-				console.log('[', '!'.yellow, ']', 'El usuario ', message.author.username, ' intento entrar a un reino pero ya pertenecia a otro')
+				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ', message.author.username, ' intento entrar a un reino pero ya pertenecia a otro');
+				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' intento entrar a un reino pero ya pertenecia a otro');
 			}
 			else {
 				member.roles.add(rolghost)
-				console.log('[', '!'.green, ']', 'El usuario ', message.author.username, ' entró a un reino y recibió su rol correctamente')
+				console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' entró a un reino y recibió su rol correctamente')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ', message.author.username, ' entró a un reino y recibió su rol correctamente');
+				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' entró a un reino y recibió su rol correctamente');
 				await interaction.showModal(nick);
 			}
 		}
@@ -287,15 +287,15 @@ client.on(Events.InteractionCreate, async interaction => {
 		else if (choice == 'fourth_option') {
 			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
 				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
-				console.log('[', '!'.yellow, ']', 'El usuario ', message.author.username, ' intento entrar a un reino pero ya pertenecia a otro')
+				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ', message.author.username, ' intento entrar a un reino pero ya pertenecia a otro');
+				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' intento entrar a un reino pero ya pertenecia a otro');
 			}
 			else {
 				member.roles.add(rolnate)
-				console.log('[', '!'.green, ']', 'El usuario ', message.author.username, ' entró a un reino y recibió su rol correctamente')
+				console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' entró a un reino y recibió su rol correctamente')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ', message.author.username, ' entró a un reino y recibió su rol correctamente');
+				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' entró a un reino y recibió su rol correctamente');
 				await interaction.showModal(nick);
 			}
 		}
