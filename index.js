@@ -308,7 +308,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({ content: 'Felicidades, ya formas parte de un reino!⚔️.', ephemeral: true });
 
 		const nick = interaction.fields.getTextInputValue('nickmc');
-		const channel = client.channels.cache.find(channel => channel.id === "1065792815419887766")
+		const channel = client.channels.cache.find(channel => channel.id === "1069880990484402196")
 		const usuariodc = '<@' + interaction.user.id + '>'
 		const usuarioclan = new EmbedBuilder()
 			.setColor(0x0099FF)
