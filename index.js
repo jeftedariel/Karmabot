@@ -147,6 +147,9 @@ client.on('messageCreate', (message) => {
 		}
 
 	})	
+
+
+
 //=================================
 //            ANUNCIOS
 //==================================
@@ -155,8 +158,8 @@ client.on("messageCreate", message => {
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Ultimo modpack disponible para acceder al servidor')
-		//.setImage('https://media.giphy.com/media/Qa4KtB03ixJrmHw7Ti/giphy.gif')
+		.setDescription('Hello! El servidor será lanzado esta semana. Para participar en los reinos deben crear un ticket, con el nombre del personaje del juego y del reino que quiera permanecer. En total son 4 reinos:' + '\n' + '\n' + 'El reino de Lautaco' + '\n' + 'El reino de Master' + '\n' + 'El reino de WarGhosts' + '\n' + 'El reino de ZyderNate' + '\n' + '\n' + 'La primera semana será un poco más tranquilo, para que puedan explorar y fortalecer el reino que haya escogido. Aún se está trabajando; las reglas y las horas de los participantes.' + '\n' + '\n' + 'Para motivar el inicio de la inauguración se está pensando un mini evento...' + '\n' + 'Spoiler: ||⚔️¡Pronto más noticias! Que gane el mejor reino.||')
+		.setImage('https://media.giphy.com/media/ab1sTJtCLHSuILnBGX/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	const Anuncioboton = new ActionRowBuilder()
 		.addComponents(
@@ -166,7 +169,7 @@ client.on("messageCreate", message => {
 				.setStyle(ButtonStyle.Link),
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
-		const channel = client.channels.cache.find(channel => channel.id === "1063123668827377737")
+		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
 		channel.send({ embeds: [Anuncio], components: [Anuncioboton] });
 		channel.send('@everyone');	
 		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
