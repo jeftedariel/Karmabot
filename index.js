@@ -329,7 +329,7 @@ client.once(Events.ClientReady, c => {
 	log.send('[ ! ] ' + `Listo!, Bot logeado como ${c.user.tag}`);
 	// Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
 	client.user.setPresence({
-		activities: [{ name: `a Jeft programar👀`, type: ActivityType.Watching }],
+		activities: [{ name: `Karmafans⚔️`, type: ActivityType.Watching }],
 		status: 'idle',
 	});
 });
