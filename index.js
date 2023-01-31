@@ -151,9 +151,9 @@ client.on("messageCreate", message => {
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		//channel.send({ embeds: [Anuncio] });
-		//channel.send('@everyone');
-		message.author.send({ embeds: [Anuncio] }).catch(console.error)
+		channel.send({ embeds: [Anuncio] });
+		channel.send('@everyone');
+		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
 		message.delete()
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
 		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
