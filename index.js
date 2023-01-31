@@ -209,7 +209,7 @@ client.on("messageCreate", message => {
 				),
 		);
 	if (/sdascx57ksdfv1azqaza1q1q1q1sd/i.test(message.content)) {
-		const channel = client.channels.cache.find(channel => channel.id === "1065028049877348382")
+		const channel = client.channels.cache.find(channel => channel.id === "1069880990484402196")
 		channel.send({ embeds: [Anuncio], components: [clanes] });
 		message.delete()
 		console.log('[', '!'.green, ']', 'Menu enviado exitosamente por', message.author.username)
@@ -308,7 +308,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({ content: 'Felicidades, ya formas parte de un reino!⚔️.', ephemeral: true });
 
 		const nick = interaction.fields.getTextInputValue('nickmc');
-		const channel = client.channels.cache.find(channel => channel.id === "1069880990484402196")
+		const channel = client.channels.cache.find(channel => channel.id === "1065792815419887766")
 		const usuariodc = '<@' + interaction.user.id + '>'
 		const usuarioclan = new EmbedBuilder()
 			.setColor(0x0099FF)
