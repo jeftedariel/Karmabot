@@ -192,7 +192,7 @@ client.on("messageCreate", message => {
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	if (/asdxczxnj0k063413s/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1070535523980038225")
-		channel.send({ embeds: [Anuncio] });
+		channel.send({ embeds: [Titulo, R1, R2, R3, info] });
 		channel.send('@everyone');
 		//message.author.send({ embeds: [Titulo, R1, R2, R3, info] }).catch(console.error)
 		message.delete()
