@@ -162,6 +162,30 @@ client.on("messageCreate", message => {
 	}
 })
 
+
+//=================================
+//            Bloqueo canales
+//==================================
+client.on("messageCreate", message => {
+
+	const Cerrado = new EmbedBuilder()
+		.setColor(0x0099FF)
+		.setTitle('General cerrado')
+		.setDescription('Se ha cerrado los canales temporalmente debido a la actitud de algunos usuarios, en un rato volverá a estar abierto al publico.')
+		.setImage('https://media.tenor.com/eZOZrY0myDcAAAAd/pato-girando.gif')
+		.setFooter({ text: 'Karmafans', iconURL: '' });
+	if (/asdxczb6452ce51/i.test(message.content)) {
+		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518754")
+		channel.send({ embeds: [Cerrado] });
+		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
+		message.delete()
+		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
+
+	}
+})
+
 //=================================
 //            REGLAS
 //==================================
