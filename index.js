@@ -184,7 +184,6 @@ client.on("messageCreate", message => {
 		log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
 	}
 })
-
 //=================================
 //            REGLAS
 //==================================
