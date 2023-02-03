@@ -256,15 +256,8 @@ client.on("messageCreate", message => {
 						  },
 					},
 					{
-						label: 'El reino de WarGhosts',
-						value: 'third_option',
-						emoji: {
-							name: '🟩',
-						  },
-					},
-					{
 						label: 'El reino de ZyderNate',
-						value: 'fourth_option',
+						value: 'third_option',
 						emoji: {
 							name: '🟥',
 						  },
@@ -332,22 +325,6 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 
 		else if (choice == 'third_option') {
-			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
-				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
-				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
-				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' intento entrar a un reino pero ya pertenecia a otro');
-			}
-			else {
-				member.roles.add(rolghost)
-				console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' entró a un reino y recibió su rol correctamente')
-				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' entró a un reino y recibió su rol correctamente');
-				await interaction.showModal(nick);
-			}
-		}
-
-		else if (choice == 'fourth_option') {
 			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
 				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
 				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
