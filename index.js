@@ -132,7 +132,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 //=======================================
-//     Sistema de Moderación V1.1
+//     Sistema de Moderación V1.2
 //=======================================
 
 client.on('messageCreate', (message) => {
@@ -146,7 +146,12 @@ client.on('messageCreate', (message) => {
 	let check = false
 	for (var palabra in blacklisted) {
 		if (!message.author.bot) {
-			if (message.content.split(/\s+/).includes(blacklisted[palabra])) check = true
+			const arrword = message.content.split(/\s+/)
+			
+			const lowerword = arrword.map(element => {
+				return element.toLowerCase();
+			  });
+			if (lowerword.includes(blacklisted[palabra])) check = true
 		}
 	}
 	if (check) {
