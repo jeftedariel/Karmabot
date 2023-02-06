@@ -136,11 +136,33 @@ client.on('messageCreate', (message) => {
 //==================================
 client.on("messageCreate", message => {
 
+	const AAnuncio = new EmbedBuilder()
+		.setColor(0x0099FF)
+		.setTitle('game over 1.12')
+		.setImage('https://cdn.discordapp.com/attachments/1060059451396206643/1071959208225951796/astronomia-lol.gif')
+		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+	if (/asdadxcz12e1388289as2ebe/i.test(message.content)) {
+		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
+		const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
+		//channel.send({ embeds: [Anuncio] });
+		//channel.send('@everyone');
+		channeltest.send({ embeds: [AAnuncio] });
+		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
+		message.delete()
+		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
+
+	}
+})
+
+client.on("messageCreate", message => {
+
 	const Anuncio = new EmbedBuilder()
 		.setColor(0x0099FF)
 		.setTitle('Anuncio')
-		.setDescription('Hola! Ya pueden unirse a un reino gracias a Karmabot, solo deben ir al canal de <#1069880990484402196>  y seleccionar el reino que gusten, luego deberán escribir su nombre tal cual como lo tienen en Minecraft y listo! eso es todo lo que deben hacer.' + '\n' + '\n' + '\n' + '\n' + '||Se vienen cositas👀||')
-		.setImage('https://media.giphy.com/media/XVAWdQSZwAT1qoLydV/giphy.gif')
+		.setDescription('Debido a la inestabilidad de la version 1.12.2 y lo vulnerable que es (Como ya muchos lo experimentaron) decidimos darle un final y migrar completamente a la 1.16.5, esto tardará un poco más pero estamos haciendo lo posible por que todo se desempeñe de la mejor manera apesar de que esto nos cueste tiempo y dinero, esto mejorará la experiencia con los mods y abrirá nuevas posibilidades para el servidor, mil disculpas por todas las demoras que hemos tenido a lo largo del proyecto. \n \n \n || ah y a los jugadores de bedrock, no nos hemos olvidado de ustedes, pronto tendran noticias ||')
+		.setImage('https://media.giphy.com/media/zDuStFVpRJIZ2/giphy.gif')
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 	const Anuncioboton = new ActionRowBuilder()
 		.addComponents(
@@ -151,8 +173,10 @@ client.on("messageCreate", message => {
 		)
 	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		channel.send({ embeds: [Anuncio] });
-		channel.send('@everyone');
+		const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
+		//channel.send({ embeds: [Anuncio] });
+		//channel.send('@everyone');
+		channeltest.send({ embeds: [Anuncio] });
 		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
 		message.delete()
 		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
@@ -360,6 +384,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	}
 });
+
 //========================================================
 // Esto avisará cuando el bot esté iniciado correctamente.
 //========================================================
