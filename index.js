@@ -1,19 +1,25 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const Sequelize = require('sequelize');
+const Canvas = require('@napi-rs/canvas');
 const dotenv = require('dotenv');
 const blacklisted = require('./blacklist.json');
 //const mcping = require('mcping-js')
 //const server = new mcping.MinecraftServer('', 25565)
-const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEvent, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, embedLength, EmbedBuilder, ButtonBuilder, ButtonStyle, Message, StringSelectMenuBuilder, MessageSelectMenu } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEvent, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, embedLength, EmbedBuilder, ButtonBuilder, ButtonStyle, Message, StringSelectMenuBuilder, AttachmentBuilder, MessageSelectMenu } = require('discord.js');
 const { colors, yellow } = require('colors');
 const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
-const { rolmaster, rollautaco, rolnate, rolghost, r1m, r2m, r3m, r4m } = require('./roles.json')
-
+const { rolmaster, rollautaco, rolnate, rolghost, r1m, r2m, r3m, r4m } = require('./roles.json');
 dotenv.config();
 require('./');
+
+
+//=======================================
+//     DEBUG MODE, 0 OR 1
+//=======================================
+
+const debuglog = 0
 
 //============================================================
 // Esto se encargará de crear una nueva instancia para el bot
@@ -23,9 +29,11 @@ const client = new Client({
 		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,
 
 	],
 })
+
 
 
 
@@ -68,9 +76,59 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
+//=======================================
+//     Sistema de Bienvenidas (WIP)
+//=======================================
 
+const applyText = (canvas, text) => {
+	const context = canvas.getContext('2d');
+	let fontSize = 70;
 
+	do {
+		context.font = `${fontSize -= 10}px sans-serif`;
+	} while (context.measureText(text).width > canvas.width - 300);
 
+	return context.font;
+};
+
+client.on("guildMemberAdd", (member) => {
+	const canvas = Canvas.createCanvas(700, 250);
+	const context = canvas.getContext('2d');
+
+	const background = readFile('./img/bienvenida.png');
+	const backgroundImage = new Image();
+	backgroundImage.src = background;
+	context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+	context.strokeStyle = '#0099ff';
+	context.strokeRect(0, 0, canvas.width, canvas.height);
+
+	context.font = '28px sans-serif';
+	context.fillStyle = '#ffffff';
+	context.fillText('Bienvenid@!', canvas.width / 2.5, canvas.height / 3.5);
+
+	context.font = applyText(canvas, `${member.user.username}!`);
+	context.fillStyle = '#ffffff';
+	context.fillText(`${member.user.username}`, canvas.width / 2.5, canvas.height / 1.8);
+
+	context.beginPath();
+	context.arc(125, 125, 100, 0, Math.PI * 2, true);
+	context.closePath();
+	context.clip();
+
+	const { body } = request(member.avatarURL({ format: 'jpg' }));
+	const avatar = new Image();
+	avatar.src = Buffer.from(body.arrayBuffer());
+	context.drawImage(avatar, 25, 25, 200, 200);
+
+	const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'profile-image.png' });
+
+	const channel = client.channels.cache.find(channel => channel.id === "1065028049877348382")
+	channel.send({ files: [attachment] });
+
+	console.log(`New User "${member.user.username}" has joined "${member.guild.name}"` );
+
+  });
 
 
 //=======================================
@@ -88,7 +146,7 @@ client.on('messageCreate', (message) => {
 	let check = false
 	for (var palabra in blacklisted) {
 		if (!message.author.bot) {
-			if (message.content.toLowerCase() === (blacklisted[palabra].toLowerCase())) check = true
+			if (message.content.split(/\s+/).includes(blacklisted[palabra])) check = true
 		}
 	}
 	if (check) {
@@ -398,6 +456,14 @@ client.once(Events.ClientReady, c => {
 		status: 'idle',
 	});
 });
+
+
+const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+client.on("error", (e) => console.error('[', '!'.red, ']', e));
+client.on("warn", (e) => console.warn('[', '!'.yellow, ']', e));
+if (debuglog === 1) {
+	client.on("debug", (e) => console.info('[', '!'.blue, ']', e));
+} 
 
 //===========================================
 //Esto se encarga de construir el formulario
