@@ -126,9 +126,9 @@ client.on("guildMemberAdd", (member) => {
 	const channel = client.channels.cache.find(channel => channel.id === "1065028049877348382")
 	channel.send({ files: [attachment] });
 
-	console.log(`New User "${member.user.username}" has joined "${member.guild.name}"` );
+	console.log(`New User "${member.user.username}" has joined "${member.guild.name}"`);
 
-  });
+});
 
 
 //=======================================
@@ -147,10 +147,10 @@ client.on('messageCreate', (message) => {
 	for (var palabra in blacklisted) {
 		if (!message.author.bot) {
 			const arrword = message.content.split(/\s+/)
-			
+
 			const lowerword = arrword.map(element => {
 				return element.toLowerCase();
-			  });
+			});
 			if (lowerword.includes(blacklisted[palabra])) check = true
 		}
 	}
@@ -166,58 +166,58 @@ client.on('messageCreate', (message) => {
 	//===================================
 	// Saludo del bot al ser mencionado
 	//===================================
-//	client.on("messageCreate", message => {
-//
-//		if (/\bkarmabot\b/i.test(message.content)) {
-//			if (!message.author.bot) {
-//				message.react('👀');
-//				console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
-//				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-//				log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
-//			}
-//		}
-//
-//	})
-//
-//client.on("messageCreate", message => {
-//
-//	if (/<@1064599332734652536>/i.test(message.content)) {
-//		if (!message.author.bot) {
-//			message.react('👀');
-//			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
-//			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-//			log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
-//		}
-//	}
-//
-//})
+	//	client.on("messageCreate", message => {
+	//
+	//		if (/\bkarmabot\b/i.test(message.content)) {
+	//			if (!message.author.bot) {
+	//				message.react('👀');
+	//				console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+	//				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+	//				log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
+	//			}
+	//		}
+	//
+	//	})
+	//
+	//client.on("messageCreate", message => {
+	//
+	//	if (/<@1064599332734652536>/i.test(message.content)) {
+	//		if (!message.author.bot) {
+	//			message.react('👀');
+	//			console.log('[', '!'.green, ']', 'El bot fue mencionado por', message.author.username)
+	//			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+	//			log.send('[ ! ] ' + 'El bot fue mencionado por ' + message.author.username);
+	//		}
+	//	}
+	//
+	//})
 
 
 
-//=================================
-//            ANUNCIOS
-//==================================
-client.on("messageCreate", message => {
+	//=================================
+	//            ANUNCIOS
+	//==================================
+	client.on("messageCreate", message => {
 
-	const AAnuncio = new EmbedBuilder()
-		.setColor(0x0099FF)
-		.setTitle('game over 1.12')
-		.setImage('https://cdn.discordapp.com/attachments/1060059451396206643/1071959208225951796/astronomia-lol.gif')
-		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
-	if (/asadavw421oh4ilu5bhli6ub/i.test(message.content)) {
-		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
-		channel.send({ embeds: [AAnuncio] });
-		channel.send('@everyone');
-		//channeltest.send({ embeds: [AAnuncio] });
-		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
-		message.delete()
-		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
-		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-		log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
+		const AAnuncio = new EmbedBuilder()
+			.setColor(0x0099FF)
+			.setTitle('game over 1.12')
+			.setImage('https://cdn.discordapp.com/attachments/1060059451396206643/1071959208225951796/astronomia-lol.gif')
+			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+		if (/asadavw421oh4ilu5bhli6ub/i.test(message.content)) {
+			const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
+			const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
+			channel.send({ embeds: [AAnuncio] });
+			channel.send('@everyone');
+			//channeltest.send({ embeds: [AAnuncio] });
+			//message.author.send({ embeds: [Anuncio] }).catch(console.error)
+			message.delete()
+			console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+			log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
 
-	}
-})
+		}
+	})
 
 client.on("messageCreate", message => {
 
@@ -313,6 +313,108 @@ client.on("messageCreate", message => {
 })
 
 //=================================
+//            AUTOROLES
+//==================================
+client.on("messageCreate", message => {
+
+	const Anuncio = new EmbedBuilder()
+		.setColor(15844367)
+		.setTitle('¡Autoroles!')
+		.setDescription('Selecciona una categoria de Autoroles!')
+		.setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
+	const roles = new ActionRowBuilder()
+		.addComponents(
+			new StringSelectMenuBuilder()
+				.setCustomId('roles')
+				.setPlaceholder('-> Click aqui <-')
+				.addOptions(
+					{
+						label: 'Notificaciones',
+						value: 'notify_option',
+						emoji: {
+							name: '📢',
+						},
+					},
+					{
+						label: 'Pais',
+						value: 'pais_option',
+						emoji: {
+							name: '🌎',
+						},
+					},
+				),
+		);
+	if (/gwegwwawd12edaW5y325wdgh54/i.test(message.content)) {
+		const channel = client.channels.cache.find(channel => channel.id === "1072303969768046652")
+		channel.send({ embeds: [Anuncio], components: [roles] });
+		message.delete()
+		console.log('[', '!'.green, ']', 'Menu enviado exitosamente por', message.author.username)
+		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		log.send('[ ! ] ' + 'Menu enviado exitosamente por ' + message.author.username);
+	}
+})
+client.on(Events.InteractionCreate, async interaction => {
+
+	if (!interaction.isStringSelectMenu()) return;
+	if (interaction.customId === 'roles') {
+		let choice = interaction.values[0]
+		const member = interaction.member
+
+		if (choice == 'notify_option') {
+
+			const Anuncio = new EmbedBuilder()
+				.setColor(5763719)
+				.setTitle('¡Notificaciones!')
+				.setDescription('Selecciona las notificaciones que quieras recibir')
+				.setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
+			const notify = new ActionRowBuilder()
+				.addComponents(
+					new StringSelectMenuBuilder()
+						.setCustomId('notificaciones')
+						.setPlaceholder('-> Click aqui <-')
+						.addOptions(
+							{
+								label: 'Minecraft Java',
+								description: 'Pings sobre el srv de MC Java',
+								value: 'mcnotify_option',
+								emoji: {
+									name: '🎮',
+								},
+							},
+							{
+								label: 'Minecraft Bedrock',
+								value: 'bdnotify_option',
+								description: 'Pings sobre el srv de MC Bedrock',
+								emoji: {
+									name: '🎮',
+								},
+							},
+							{
+								label: 'Discord',
+								value: 'dcnotify_option',
+								description: 'Pings sobre este Discord y Karmabot',
+								emoji: {
+									name: '💬',
+								},
+							},
+						),
+				);
+			interaction.reply({ embeds: [Anuncio], components: [notify], ephemeral: true })
+			console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' ejecutó el menu de roles de notificacion')
+			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+			log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó el menu de roles de notificacion');
+		}
+
+		else if (choice == 'pais_option') {
+			interaction.reply({ content: "En desarrollo...", ephemeral: true })
+			console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' ejecutó el menu de roles de pais')
+			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+			log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó el menu de roles de pais');
+		}
+	}
+})
+
+//=================================
 //            AUTOROL CLAN
 //==================================
 client.on("messageCreate", message => {
@@ -325,7 +427,7 @@ client.on("messageCreate", message => {
 	const clanes = new ActionRowBuilder()
 		.addComponents(
 			new StringSelectMenuBuilder()
-				.setCustomId('select')
+				.setCustomId('clanes')
 				.setPlaceholder('-> Click aqui para unirse <-')
 				.addOptions(
 					{
@@ -333,25 +435,25 @@ client.on("messageCreate", message => {
 						value: 'first_option',
 						emoji: {
 							name: '🟨',
-						  },
+						},
 					},
 					{
 						label: 'El reino de Master',
 						value: 'second_option',
 						emoji: {
 							name: '🟦',
-						  },
+						},
 					},
 					{
 						label: 'El reino de ZyderNate',
 						value: 'third_option',
 						emoji: {
 							name: '🟥',
-						  },
+						},
 					},
 				),
 		);
-	if (/sdascx57ksdfv1azqaza1q1q1q1sd/i.test(message.content)) {
+	if (/zceg24g5y634g43t24/i.test(message.content)) {
 		const channel = client.channels.cache.find(channel => channel.id === "1069880990484402196")
 		channel.send({ embeds: [Anuncio], components: [clanes] });
 		message.delete()
@@ -374,8 +476,8 @@ client.on(Events.InteractionCreate, async interaction => {
 	nick.addComponents(firstActionRow);
 
 
-	if (interaction.isStringSelectMenu()) {
-
+	if (!interaction.isStringSelectMenu()) return;
+	if (interaction.customId === 'clanes') {
 		let choice = interaction.values[0]
 		const member = interaction.member
 
@@ -439,11 +541,11 @@ client.on(Events.InteractionCreate, async interaction => {
 		const usuariodc = '<@' + interaction.user.id + '>'
 		const usuarioclan = new EmbedBuilder()
 			.setColor(0x0099FF)
-			.setDescription('El usuario ' +  usuariodc + ' se unió a un reino y su nick de mc es: ' + nick)
+			.setDescription('El usuario ' + usuariodc + ' se unió a un reino y su nick de mc es: ' + nick)
 		channel.send({ embeds: [usuarioclan] });
-		console.log('[', '!'.green, ']', 'El usuario ' +  usuariodc + ' se unió a un reino y su nick de mc es: ' + nick)
+		console.log('[', '!'.green, ']', 'El usuario ' + usuariodc + ' se unió a un reino y su nick de mc es: ' + nick)
 		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-		log.send('[ ! ] ' + 'El usuario ' +  usuariodc + ' se unió a un reino y su nick de mc es: ' + nick);
+		log.send('[ ! ] ' + 'El usuario ' + usuariodc + ' se unió a un reino y su nick de mc es: ' + nick);
 
 	}
 });
@@ -468,7 +570,7 @@ client.on("error", (e) => console.error('[', '!'.red, ']', e));
 client.on("warn", (e) => console.warn('[', '!'.yellow, ']', e));
 if (debuglog === 1) {
 	client.on("debug", (e) => console.info('[', '!'.blue, ']', e));
-} 
+}
 
 //===========================================
 //Esto se encarga de construir el formulario
