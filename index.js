@@ -10,7 +10,7 @@ const { colors, yellow } = require('colors');
 const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
-const { rolmaster, rollautaco, rolnate, rolghost, r1m, r2m, r3m, r4m } = require('./roles.json');
+const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscord, r1m, r2m, r3m, r4m } = require('./roles.json');
 dotenv.config();
 require('./');
 
@@ -196,21 +196,29 @@ client.on('messageCreate', (message) => {
 
 	//=================================
 	//            ANUNCIOS
-	//==================================
+	//=================================
+
 	client.on("messageCreate", message => {
 
-		const AAnuncio = new EmbedBuilder()
+		const Anuncio = new EmbedBuilder()
 			.setColor(0x0099FF)
-			.setTitle('game over 1.12')
-			.setImage('https://cdn.discordapp.com/attachments/1060059451396206643/1071959208225951796/astronomia-lol.gif')
+			.setTitle('Test 1.16.5')
+			.setDescription('Como ya muchos saben, estamos migrando a la 1.16.5, es por esto que estaremos preparando diferentes testeos del servidor para que cuando se publique la version final tenga corregidos los posibles problemas que se presenten durante los testeos, estos servidores tendrán un mundo temporal y no contaran con un lobby por la misma razón. \n \n La IP para acceder al servidor de testeo es la siguente: \n \n ```mc.karmafans.xyz```')
+			.setImage('https://media.giphy.com/media/v9yxMURVsp6l4rWtFg/giphy.gif')
 			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
-		if (/asadavw421oh4ilu5bhli6ub/i.test(message.content)) {
+		const Anuncioboton = new ActionRowBuilder()
+			.addComponents(
+				new ButtonBuilder()
+					.setLabel('Descargar')
+					.setURL("https://www.mediafire.com/file/cw4e3i88m7mdg6m/mods_1.16.5.rar/file")
+					.setStyle(ButtonStyle.Link),
+			)
+		if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
 			const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
 			const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
-			channel.send({ embeds: [AAnuncio] });
-			channel.send('@everyone');
-			//channeltest.send({ embeds: [AAnuncio] });
-			//message.author.send({ embeds: [Anuncio] }).catch(console.error)
+			//channel.send({ embeds: [Anuncio] });
+			//channel.send('@everyone');
+			channeltest.send({ embeds: [Anuncio], components: [Anuncioboton] });
 			message.delete()
 			console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
 			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
@@ -218,36 +226,6 @@ client.on('messageCreate', (message) => {
 
 		}
 	})
-
-client.on("messageCreate", message => {
-
-	const Anuncio = new EmbedBuilder()
-		.setColor(0x0099FF)
-		.setTitle('Anuncio')
-		.setDescription('Debido a la inestabilidad de la version 1.12.2 y lo vulnerable que es (como ya muchos lo experimentaron) decidimos darle un final y migrar completamente a la 1.16.5, esto tardará un poco más pero estamos haciendo lo posible por que todo se desempeñe de la mejor manera apesar de que esto nos cueste tiempo y dinero, esto mejorará la experiencia con los mods y abrirá nuevas posibilidades para el servidor, mil disculpas por todas las demoras que hemos tenido a lo largo del proyecto. \n \n \n || ah y a los jugadores de bedrock, no nos hemos olvidado de ustedes, pronto tendran noticias ||')
-		.setImage('https://media.giphy.com/media/zDuStFVpRJIZ2/giphy.gif')
-		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
-	const Anuncioboton = new ActionRowBuilder()
-		.addComponents(
-			new ButtonBuilder()
-				.setLabel('Descargar')
-				.setURL("https://www.dropbox.com/s/1a2zdu9cqqo75es/mods.rar?dl=1")
-				.setStyle(ButtonStyle.Link),
-		)
-	if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
-		const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
-		const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
-		channel.send({ embeds: [Anuncio] });
-		channel.send('@everyone');
-		//channeltest.send({ embeds: [Anuncio] });
-		//message.author.send({ embeds: [Anuncio] }).catch(console.error)
-		message.delete()
-		console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
-		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-		log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
-
-	}
-})
 
 
 //=================================
@@ -367,10 +345,10 @@ client.on(Events.InteractionCreate, async interaction => {
 				.setTitle('¡Notificaciones!')
 				.setDescription('Selecciona las notificaciones que quieras recibir')
 				.setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
-			const notify = new ActionRowBuilder()
+			const pings = new ActionRowBuilder()
 				.addComponents(
 					new StringSelectMenuBuilder()
-						.setCustomId('notificaciones')
+						.setCustomId('pings')
 						.setPlaceholder('-> Click aqui <-')
 						.addOptions(
 							{
@@ -399,7 +377,69 @@ client.on(Events.InteractionCreate, async interaction => {
 							},
 						),
 				);
-			interaction.reply({ embeds: [Anuncio], components: [notify], ephemeral: true })
+
+			client.on(Events.InteractionCreate, async interaction => {
+				if (!interaction.isStringSelectMenu()) return;
+				if (interaction.customId === 'pings') {
+					let choice = interaction.values[0]
+					const member = interaction.member
+
+					if (choice == 'mcnotify_option') {
+						if (member.roles.cache.some(role => role.id == roljava)) {
+							member.roles.remove(roljava)
+							interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Minecraft Java.❌", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' eliminó su rol de Minecraft Java')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' eliminó su rol de Minecraft Java')
+						}
+						else {
+							member.roles.add(roljava)
+							interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Minecraft Java.✅", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió el rol de Minecraft Java')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió el rol de Minecraft Java');
+						}
+					}
+
+					else if (choice == 'bdnotify_option') {
+						if (member.roles.cache.some(role => role.id == rolbedrock)) {
+							member.roles.remove(rolbedrock)
+							interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Minecraft Bedrock.❌", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' eliminó su rol de Minecraft Bedrock')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' eliminó su rol de Minecraft Bedrock')
+						}
+						else {
+							member.roles.add(rolbedrock)
+							interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Minecraft Bedrock.✅", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió el rol de Minecraft Bedrock')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió el rol de Minecraft Bedrock');
+						}
+					}
+
+					else if (choice == 'dcnotify_option') {
+						if (member.roles.cache.some(role => role.id == roldiscord)) {
+							member.roles.remove(roldiscord)
+							interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Discord.❌", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' eliminó su rol de Discord')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' eliminó su rol de Discord')
+						}
+						else {
+							member.roles.add(roldiscord)
+							interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Discord.✅", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió el rol de Discord')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió el rol de Discord');
+						}
+					}
+
+				}
+			})
+
+
+			interaction.reply({ embeds: [Anuncio], components: [pings], ephemeral: true })
 			console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' ejecutó el menu de roles de notificacion')
 			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 			log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó el menu de roles de notificacion');
