@@ -202,23 +202,23 @@ client.on('messageCreate', (message) => {
 
 		const Anuncio = new EmbedBuilder()
 			.setColor(0x0099FF)
-			.setTitle('Test 1.16.5')
-			.setDescription('Como ya muchos saben, estamos migrando a la 1.16.5, es por esto que estaremos preparando diferentes testeos del servidor para que cuando se publique la version final tenga corregidos los posibles problemas que se presenten durante los testeos, estos servidores tendrán un mundo temporal y no contaran con un lobby por la misma razón. \n \n La IP para acceder al servidor de testeo es la siguente: \n \n ```mc.karmafans.xyz```')
-			.setImage('https://media.giphy.com/media/v9yxMURVsp6l4rWtFg/giphy.gif')
+			.setTitle('Beta Publica')
+			.setDescription('Hola Karmafans! \n Hemos estado trabajando en mejorar la seguridad del servidor y parchear muchos errores que tenia la beta publica anterior, se ha agregado una verificacion Antibots (Junto con un captcha), tambien se han fixeado varias vulnerabalidades que hacian que nos pudieran tirar el servidor en la beta anterior y miles de cosas que acá no puedo comentar por temas de seguridad y pues tambien que quedaria muy largo el mensaje, pero bueno, cuando entren deberan acomodar la imagen para ver el codigo y luego escribirlo en el chat, seguido de esto ya podran ingresar al servidor con normalidad. \n \n La IP para acceder al servidor de testeo es la siguente: \n \n ```mc.karmafans.xyz``` \n \n Notas: \n \n 1- Recuerden Borrar la carpeta config que está en .minecraft \n 2- Fabecio está aun terminando el mod de funkos \n 3- Jeft está terminando el menú de Autoroles de Karmabot \n 4- Elmr está terminando el mod para el menú del juego \n 4- RECUERDEN, Esto es una beta publica, no va a ser el mundo final.')
+			.setImage('https://media.giphy.com/media/hG0FcGG9rVjDBr2545/giphy.gif')
 			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 		const Anuncioboton = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
 					.setLabel('Descargar')
-					.setURL("https://www.mediafire.com/file/cw4e3i88m7mdg6m/mods_1.16.5.rar/file")
+					.setURL("https://www.mediafire.com/file/ike6w9js188e408/mods_y_nada_mas_que_mod.rar/file")
 					.setStyle(ButtonStyle.Link),
 			)
 		if (/7346sdaksasdsbggedaiub52536/i.test(message.content)) {
 			const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
 			const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
-			//channel.send({ embeds: [Anuncio] });
-			//channel.send('@everyone');
-			channeltest.send({ embeds: [Anuncio], components: [Anuncioboton] });
+			channel.send({ embeds: [Anuncio] });
+			channel.send('@everyone');
+			//channeltest.send({ embeds: [Anuncio], components: [Anuncioboton] });
 			message.delete()
 			console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
 			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
