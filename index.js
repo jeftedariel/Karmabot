@@ -236,7 +236,9 @@ client.on('messageCreate', (message) => {
 		const Anuncio = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setTitle('Anuncio')
-			.setDescription('Hola Karmafans!, \n \n Se ha publicado un video explicando como realizar una instalación limpia que 100% seguro les va a funcionar para entrar al servidor, esto porque hemos estado teniendo problemas con usuarios que utilizan TLauncher, esperamos les sea de útil. \n \n \n https://www.youtube.com/watch?v=JiAa5v4zjOc')
+			.setURL('https://www.youtube.com/watch?v=JiAa5v4zjOc')
+			.setImage('https://media.giphy.com/media/L00auhhVx68CI/giphy.gif')
+			.setDescription('Hola Karmafans!, \n \n Se ha publicado un video explicando como realizar una instalación limpia que 100% seguro les va a funcionar para entrar al servidor, esto porque hemos estado teniendo problemas con usuarios que utilizan TLauncher, esperamos les sea útil. \n \n \n https://www.youtube.com/watch?v=JiAa5v4zjOc')
 			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 		const Anuncioboton = new ActionRowBuilder()
 			.addComponents(
