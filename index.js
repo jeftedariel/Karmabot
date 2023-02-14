@@ -192,6 +192,39 @@ client.on('messageCreate', (message) => {
 	//
 	//})
 
+	//=================================
+	//        ANUNCIOS 1.2
+	//=================================
+
+	client.on("messageCreate", message => {
+
+		const Anuncio = new EmbedBuilder()
+			.setColor(0x0099FF)
+			.setTitle('Beta Publica')
+			.setDescription('Hola Karmafans! \n Hemos estado trabajando en mejorar la seguridad del servidor y parchear muchos errores que tenia la beta publica anterior, se ha agregado una verificacion Antibots (Junto con un captcha), tambien se han fixeado varias vulnerabalidades que hacian que nos pudieran tirar el servidor en la beta anterior y miles de cosas que acá no puedo comentar por temas de seguridad y pues tambien que quedaria muy largo el mensaje, pero bueno, cuando entren deberan acomodar la imagen para ver el codigo y luego escribirlo en el chat, seguido de esto ya podran ingresar al servidor con normalidad. \n \n La IP para acceder al servidor de testeo es la siguente: \n \n ```mc.karmafans.xyz``` \n \n Notas: \n \n 1- Recuerden Borrar la carpeta config que está en .minecraft \n 2- Fabecio está aun terminando el mod de funkos \n 3- Jeft está terminando el menú de Autoroles de Karmabot \n 4- Elmr está terminando el mod para el menú del juego \n 4- RECUERDEN, Esto es una beta publica, no va a ser el mundo final.')
+			.setImage('https://media.giphy.com/media/hG0FcGG9rVjDBr2545/giphy.gif')
+			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+		const Anuncioboton = new ActionRowBuilder()
+			.addComponents(
+				new ButtonBuilder()
+					.setLabel('Descargar')
+					.setURL("https://www.mediafire.com/file/ike6w9js188e408/mods_y_nada_mas_que_mod.rar/file")
+					.setStyle(ButtonStyle.Link),
+			)
+		if (/7346sdqasdasdcaefaksasdsbggedaiub52536/i.test(message.content)) {
+			const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
+			const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
+			channel.send({ embeds: [Anuncio] });
+			channel.send('@everyone');
+			//channeltest.send({ embeds: [Anuncio], components: [Anuncioboton] });
+			message.delete()
+			console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+			log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
+
+		}
+	})
+
 
 
 	//=================================
@@ -202,9 +235,8 @@ client.on('messageCreate', (message) => {
 
 		const Anuncio = new EmbedBuilder()
 			.setColor(0x0099FF)
-			.setTitle('Beta Publica')
-			.setDescription('Hola Karmafans! \n Hemos estado trabajando en mejorar la seguridad del servidor y parchear muchos errores que tenia la beta publica anterior, se ha agregado una verificacion Antibots (Junto con un captcha), tambien se han fixeado varias vulnerabalidades que hacian que nos pudieran tirar el servidor en la beta anterior y miles de cosas que acá no puedo comentar por temas de seguridad y pues tambien que quedaria muy largo el mensaje, pero bueno, cuando entren deberan acomodar la imagen para ver el codigo y luego escribirlo en el chat, seguido de esto ya podran ingresar al servidor con normalidad. \n \n La IP para acceder al servidor de testeo es la siguente: \n \n ```mc.karmafans.xyz``` \n \n Notas: \n \n 1- Recuerden Borrar la carpeta config que está en .minecraft \n 2- Fabecio está aun terminando el mod de funkos \n 3- Jeft está terminando el menú de Autoroles de Karmabot \n 4- Elmr está terminando el mod para el menú del juego \n 4- RECUERDEN, Esto es una beta publica, no va a ser el mundo final.')
-			.setImage('https://media.giphy.com/media/hG0FcGG9rVjDBr2545/giphy.gif')
+			.setTitle('Anuncio')
+			.setDescription('Hola Karmafans!, \n \n Se ha publicado un video explicando como realizar una instalación limpia que 100% seguro les va a funcionar, esto porque hemos estado teniendo problemas con usuarios que utilizan TLauncher, esperamos les sea de útil. \n \n \n https://www.youtube.com/watch?v=JiAa5v4zjOc')
 			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 		const Anuncioboton = new ActionRowBuilder()
 			.addComponents(
@@ -227,6 +259,34 @@ client.on('messageCreate', (message) => {
 		}
 	})
 
+
+	/////////////////////////////////////////
+
+
+	client.on("messageCreate", message => {
+
+		const Anuncio = new EmbedBuilder()
+			.setColor(0x0099FF)
+			.setTitle('IP y Modpack Java 1.16.5')
+			.setDescription('```mc.karmafans.xyz```')
+		const Anuncioboton = new ActionRowBuilder()
+			.addComponents(
+				new ButtonBuilder()
+					.setLabel('Descargar')
+					.setURL("https://www.mediafire.com/file/ike6w9js188e408/mods_y_nada_mas_que_mod.rar/file")
+					.setStyle(ButtonStyle.Link),
+			)
+		if (/assddaszxxxxdddcvzxxnopiqn3d45f/i.test(message.content)) {
+			const channel = client.channels.cache.find(channel => channel.id === "1074320286079533188")
+			const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
+			channel.send({ embeds: [Anuncio], components: [Anuncioboton] });
+			message.delete()
+			console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
+			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+			log.send('[ ! ] ' + 'Anuncio enviado exitosamente por ' + message.author.username);
+
+		}
+	})
 
 //=================================
 //            Bloqueo canales
@@ -707,6 +767,8 @@ client.on(Events.InteractionCreate, async interaction => {
 		log.send('[ ! ] ' + 'El usuario ' + '<@' + interaction.user.id + '>' + 'Envió exitosamente su lore');
 	}
 });
+
+
 
 //=============================================
 // Esto tomará el token desde el archivo .env
