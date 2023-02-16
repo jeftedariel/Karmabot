@@ -10,7 +10,7 @@ const { colors, yellow } = require('colors');
 const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
-const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscord, r1m, r2m, r3m, r4m } = require('./roles.json');
+const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscord, us, mx, gt, hn, sv, ni, cr, pa, co, ve, ec, pe, bo, py, uy, cl, ar, es,  r1m, r2m, r3m, r4m } = require('./roles.json');
 const { url } = require('node:inspector');
 dotenv.config();
 require('./');
@@ -404,7 +404,8 @@ client.on(Events.InteractionCreate, async interaction => {
 								description: 'Pings sobre el srv de MC Java',
 								value: 'mcnotify_option',
 								emoji: {
-									name: '🎮',
+									name: 'java',
+									id: '1075610263098773524'
 								},
 							},
 							{
@@ -412,7 +413,8 @@ client.on(Events.InteractionCreate, async interaction => {
 								value: 'bdnotify_option',
 								description: 'Pings sobre el srv de MC Bedrock',
 								emoji: {
-									name: '🎮',
+									name: 'bedrock',
+									id: '1075610220987941004'
 								},
 							},
 							{
@@ -420,12 +422,12 @@ client.on(Events.InteractionCreate, async interaction => {
 								value: 'dcnotify_option',
 								description: 'Pings sobre este Discord y Karmabot',
 								emoji: {
-									name: '💬',
+									name: 'discord',
+									id: '1075610298473517167'
 								},
 							},
 						),
 				);
-
 			client.on(Events.InteractionCreate, async interaction => {
 				if (!interaction.isStringSelectMenu()) return;
 				if (interaction.customId === 'pings') {
@@ -494,7 +496,770 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 
 		else if (choice == 'pais_option') {
-			interaction.reply({ content: "En desarrollo...", ephemeral: true })
+
+			const Anuncio = new EmbedBuilder()
+				.setColor(5763719)
+				.setTitle('¡Países!')
+				.setDescription('Selecciona tu pais para recibir el rol')
+				.setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
+			const paises = new ActionRowBuilder()
+				.addComponents(
+					new StringSelectMenuBuilder()
+						.setCustomId('paises')
+						.setPlaceholder('-> Click aqui <-')
+						.addOptions(
+							{
+								label: 'Estados unidos',
+								value: 'us_option',
+								emoji: {
+									name: '🇺🇸'
+								},
+							},
+							{
+								label: 'México',
+								value: 'mx_option',
+								emoji: {
+									name: '🇲🇽'
+								},
+							},
+							{
+								label: 'Guatemala',
+								value: 'gt_option',
+								emoji: {
+									name: '🇬🇹'
+								},
+							},
+							{
+								label: 'Honduras',
+								value: 'hn_option',
+								emoji: {
+									name: '🇭🇳'
+								},
+							},
+							{
+								label: 'El Salvador',
+								value: 'sv_option',
+								emoji: {
+									name: '🇸🇻'
+								},
+							},
+							{
+								label: 'Nicaragua',
+								value: 'ni_option',
+								emoji: {
+									name: '🇳🇮'
+								},
+							},
+							{
+								label: 'Costa Rica',
+								value: 'cr_option',
+								emoji: {
+									name: '🇨🇷'
+								},
+							},
+							{
+								label: 'Panamá',
+								value: 'pa_option',
+								emoji: {
+									name: '🇵🇦'
+								},
+							},
+							{
+								label: 'Colombia',
+								value: 'co_option',
+								emoji: {
+									name: '🇨🇴'
+								},
+							},
+							{
+								label: 'Venezuela',
+								value: 've_option',
+								emoji: {
+									name: '🇻🇪'
+								},
+							},
+							{
+								label: 'Ecuador',
+								value: 'ec_option',
+								emoji: {
+									name: '🇪🇨'
+								},
+							},
+							{
+								label: 'Perú',
+								value: 'pe_option',
+								emoji: {
+									name: '🇵🇪'
+								},
+							},
+							{
+								label: 'Bolivia',
+								value: 'bo_option',
+								emoji: {
+									name: '🇧🇴'
+								},
+							},
+							{
+								label: 'Paraguay',
+								value: 'py_option',
+								emoji: {
+									name: '🇵🇾'
+								},
+							},
+							{
+								label: 'Uruguay',
+								value: 'uy_option',
+								emoji: {
+									name: '🇺🇾'
+								},
+							},
+							{
+								label: 'Chile',
+								value: 'cl_option',
+								emoji: {
+									name: '🇨🇱'
+								},
+							},
+							{
+								label: 'Argentina',
+								value: 'ar_option',
+								emoji: {
+									name: '🇦🇷'
+								},
+							},
+							{
+								label: 'España',
+								value: 'es_option',
+								emoji: {
+									name: '🇪🇸'
+								},
+							},
+						),
+				);
+			client.on(Events.InteractionCreate, async interaction => {
+				if (!interaction.isStringSelectMenu()) return;
+				if (interaction.customId === 'paises') {
+					let choice = interaction.values[0]
+					const member = interaction.member
+
+					if (choice == 'us_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(us)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(us)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+
+					else if (choice == 'mx_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(mx)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(mx)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'gt_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(gt)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(gt)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'hn_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(hn)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(hn)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'sv_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(sv)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(sv)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'ni_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(ni)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(ni)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'cr_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(cr)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(cr)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}	
+					else if (choice == 'pa_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+							
+							member.roles.add(pa)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(pa)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'co_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(co)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(co)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 've_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(ve)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(ve)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'ec_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(ec)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(ec)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'pe_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(pe)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(pe)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'bo_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(bo)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(bo)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'py_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(py)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(py)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'uy_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(uy)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(uy)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'cl_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(ar)
+							member.roles.remove(es)
+
+							member.roles.add(cl)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(cl)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'ar_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(es)
+
+							member.roles.add(ar)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(ar)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}
+					else if (choice == 'es_option') {
+						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
+							member.roles.remove(us)
+							member.roles.remove(mx)
+							member.roles.remove(gt)
+							member.roles.remove(hn)
+							member.roles.remove(sv)
+							member.roles.remove(ni)
+							member.roles.remove(cr)
+							member.roles.remove(pa)
+							member.roles.remove(co)
+							member.roles.remove(ve)
+							member.roles.remove(ec)
+							member.roles.remove(pe)
+							member.roles.remove(bo)
+							member.roles.remove(py)
+							member.roles.remove(uy)
+							member.roles.remove(cl)
+							member.roles.remove(ar)
+
+							member.roles.add(es)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+						else {
+							member.roles.add(es)
+							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais')
+							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais');
+						}
+					}				
+				}
+			})
+
+
+			interaction.reply({ embeds: [Anuncio], components: [paises], ephemeral: true })
 			console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' ejecutó el menu de roles de pais')
 			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 			log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó el menu de roles de pais');
