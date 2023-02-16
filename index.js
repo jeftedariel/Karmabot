@@ -489,7 +489,7 @@ client.on(Events.InteractionCreate, async interaction => {
 			})
 
 
-			interaction.reply({ embeds: [Anuncio], components: [pings], ephemeral: true })
+			await interaction.reply({ embeds: [Anuncio], components: [pings], ephemeral: true })
 			console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' ejecutó el menu de roles de notificacion')
 			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 			log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó el menu de roles de notificacion');
@@ -1259,7 +1259,7 @@ client.on(Events.InteractionCreate, async interaction => {
 			})
 
 
-			interaction.reply({ embeds: [Anuncio], components: [paises], ephemeral: true })
+			await interaction.reply({ embeds: [Anuncio], components: [paises], ephemeral: true })
 			console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' ejecutó el menu de roles de pais')
 			const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 			log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó el menu de roles de pais');
