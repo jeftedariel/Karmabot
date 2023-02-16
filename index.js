@@ -644,23 +644,61 @@ client.on(Events.InteractionCreate, async interaction => {
 
 					if (choice == 'us_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(us)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -679,23 +717,61 @@ client.on(Events.InteractionCreate, async interaction => {
 
 					else if (choice == 'mx_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(mx)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -713,23 +789,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'gt_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(gt)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -747,23 +861,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'hn_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(hn)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -781,23 +933,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'sv_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(sv)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -815,23 +1005,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'ni_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(ni)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -849,23 +1077,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'cr_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(cr)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -883,23 +1149,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}	
 					else if (choice == 'pa_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 							
 							member.roles.add(pa)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -917,23 +1221,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'co_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(co)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -951,23 +1293,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 've_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(ve)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -985,23 +1365,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'ec_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(ec)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -1019,23 +1437,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'pe_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(pe)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -1053,23 +1509,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'bo_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(bo)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -1087,23 +1581,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'py_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(py)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -1121,23 +1653,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'uy_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(uy)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -1155,23 +1725,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'cl_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(ar)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(cl)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -1189,23 +1797,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'ar_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(es)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(ar)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
@@ -1223,23 +1869,61 @@ client.on(Events.InteractionCreate, async interaction => {
 					}
 					else if (choice == 'es_option') {
 						if (member.roles.cache.some(role => role.id == us || role.id == mx || role.id == gt || role.id == hn || role.id == sv || role.id == ni || role.id == cr || role.id == pa || role.id == co || role.id == ve || role.id == ec || role.id == pe || role.id == bo || role.id == py || role.id == uy || role.id == cl || role.id == ar|| role.id == es)) {
-							member.roles.remove(us)
-							member.roles.remove(mx)
-							member.roles.remove(gt)
-							member.roles.remove(hn)
-							member.roles.remove(sv)
-							member.roles.remove(ni)
-							member.roles.remove(cr)
-							member.roles.remove(pa)
-							member.roles.remove(co)
-							member.roles.remove(ve)
-							member.roles.remove(ec)
-							member.roles.remove(pe)
-							member.roles.remove(bo)
-							member.roles.remove(py)
-							member.roles.remove(uy)
-							member.roles.remove(cl)
-							member.roles.remove(ar)
+							if (member.roles.cache.some(role => role.id == us)) {
+								member.roles.remove(us)
+							}
+							if (member.roles.cache.some(role => role.id == mx)) {
+								member.roles.remove(mx)
+								console.log('a')
+							}
+							if (member.roles.cache.some(role => role.id == gt)) {
+								member.roles.remove(gt)
+							}
+							if (member.roles.cache.some(role => role.id == hn)) {
+								member.roles.remove(hn)
+							}
+							if (member.roles.cache.some(role => role.id == sv)) {
+								member.roles.remove(sv)
+							}
+							if (member.roles.cache.some(role => role.id == ni)) {
+								member.roles.remove(ni)
+							}
+							if (member.roles.cache.some(role => role.id == cr)) {
+								member.roles.remove(cr)
+							}
+							if (member.roles.cache.some(role => role.id == pa)) {
+								member.roles.remove(pa)
+							}
+							if (member.roles.cache.some(role => role.id == co)) {
+								member.roles.remove(co)
+							}
+							if (member.roles.cache.some(role => role.id == ve)) {
+								member.roles.remove(ve)
+							}
+							if (member.roles.cache.some(role => role.id == ec)) {
+								member.roles.remove(ec)
+							}
+							if (member.roles.cache.some(role => role.id == pe)) {
+								member.roles.remove(pe)
+							}
+							if (member.roles.cache.some(role => role.id == bo)) {
+								member.roles.remove(bo)
+							}
+							if (member.roles.cache.some(role => role.id == py)) {
+								member.roles.remove(py)
+							}
+							if (member.roles.cache.some(role => role.id == uy)) {
+								member.roles.remove(uy)
+							}
+							if (member.roles.cache.some(role => role.id == cl)) {
+								member.roles.remove(cl)
+							}
+							if (member.roles.cache.some(role => role.id == ar)) {
+								member.roles.remove(ar)
+							}
+							if (member.roles.cache.some(role => role.id == es)) {
+								member.roles.remove(es)
+							}
 
 							member.roles.add(es)
 							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
