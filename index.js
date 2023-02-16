@@ -222,7 +222,7 @@ client.on('messageCreate', (message) => {
 		const Anuncio = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setTitle('Anuncio')
-			.setURL('https://www.youtube.com/watch?v=JiAa5v4zjOc')
+
 			.setImage('https://media.giphy.com/media/L00auhhVx68CI/giphy.gif')
 			.setDescription('Hola Karmafans!, \n \n Se ha publicado un video explicando como realizar una instalación limpia que 100% seguro les va a funcionar para entrar al servidor, esto porque hemos estado teniendo problemas con usuarios que utilizan TLauncher, esperamos les sea útil. \n \n \n https://www.youtube.com/watch?v=JiAa5v4zjOc')
 			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
@@ -437,14 +437,14 @@ client.on(Events.InteractionCreate, async interaction => {
 					if (choice == 'mcnotify_option') {
 						if (member.roles.cache.some(role => role.id == roljava)) {
 							member.roles.remove(roljava)
-							interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Minecraft Java.❌", ephemeral: true })
+							await interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Minecraft Java.❌", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' eliminó su rol de Minecraft Java')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' eliminó su rol de Minecraft Java')
 						}
 						else {
 							member.roles.add(roljava)
-							interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Minecraft Java.✅", ephemeral: true })
+							await interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Minecraft Java.✅", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió el rol de Minecraft Java')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió el rol de Minecraft Java');
@@ -454,14 +454,14 @@ client.on(Events.InteractionCreate, async interaction => {
 					else if (choice == 'bdnotify_option') {
 						if (member.roles.cache.some(role => role.id == rolbedrock)) {
 							member.roles.remove(rolbedrock)
-							interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Minecraft Bedrock.❌", ephemeral: true })
+							await interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Minecraft Bedrock.❌", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' eliminó su rol de Minecraft Bedrock')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' eliminó su rol de Minecraft Bedrock')
 						}
 						else {
 							member.roles.add(rolbedrock)
-							interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Minecraft Bedrock.✅", ephemeral: true })
+							await interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Minecraft Bedrock.✅", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió el rol de Minecraft Bedrock')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió el rol de Minecraft Bedrock');
@@ -471,14 +471,14 @@ client.on(Events.InteractionCreate, async interaction => {
 					else if (choice == 'dcnotify_option') {
 						if (member.roles.cache.some(role => role.id == roldiscord)) {
 							member.roles.remove(roldiscord)
-							interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Discord.❌", ephemeral: true })
+							await interaction.reply({ content: "Ya no recibirás notificaciones relacionadas con Discord.❌", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' eliminó su rol de Discord')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' eliminó su rol de Discord')
 						}
 						else {
 							member.roles.add(roldiscord)
-							interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Discord.✅", ephemeral: true })
+							await interaction.reply({ content: "Ahora recibirás notificaciones relacionadas con Discord.✅", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió el rol de Discord')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió el rol de Discord');
@@ -701,14 +701,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(us)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Estados Unidos')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Estados Unidos');
 						}
 						else {
 							member.roles.add(us)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Estados Unidos')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Estados Unidos');
@@ -774,14 +774,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(mx)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais México')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais México');
 						}
 						else {
 							member.roles.add(mx)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais México')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais México');
@@ -846,14 +846,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(gt)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Guatemala')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Guatemala');
 						}
 						else {
 							member.roles.add(gt)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Guatemala')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Guatemala');
@@ -918,14 +918,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(hn)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Honduras')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Honduras');
 						}
 						else {
 							member.roles.add(hn)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Honduras')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Honduras');
@@ -990,14 +990,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(sv)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais El salvador')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais El salvador');
 						}
 						else {
 							member.roles.add(sv)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais El salvador')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais El salvador');
@@ -1062,14 +1062,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(ni)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Nicaragua')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Nicaragua');
 						}
 						else {
 							member.roles.add(ni)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Nicaragua')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Nicaragua');
@@ -1134,14 +1134,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(cr)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Costa Rica')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Costa Rica');
 						}
 						else {
 							member.roles.add(cr)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Costa Rica')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Costa Rica');
@@ -1206,14 +1206,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 							
 							member.roles.add(pa)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Panama')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Panama');
 						}
 						else {
 							member.roles.add(pa)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Panama')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Panama');
@@ -1278,14 +1278,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(co)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Colombia')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Colombia');
 						}
 						else {
 							member.roles.add(co)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Colombia')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Colombia');
@@ -1350,14 +1350,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(ve)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Venezuela')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Venezuela');
 						}
 						else {
 							member.roles.add(ve)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Venezuela')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Venezuela');
@@ -1422,14 +1422,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(ec)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Ecuador')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Ecuador');
 						}
 						else {
 							member.roles.add(ec)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Ecuador')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Ecuador');
@@ -1494,14 +1494,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(pe)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Peru')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Peru');
 						}
 						else {
 							member.roles.add(pe)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Peru')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Peru');
@@ -1566,14 +1566,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(bo)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Bolivia')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Bolivia');
 						}
 						else {
 							member.roles.add(bo)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Bolivia')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Bolivia');
@@ -1638,14 +1638,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(py)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Paraguay')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Paraguay');
 						}
 						else {
 							member.roles.add(py)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Paraguay')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Paraguay');
@@ -1710,14 +1710,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(uy)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Uruguay')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Uruguay');
 						}
 						else {
 							member.roles.add(uy)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Uruguay')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Uruguay');
@@ -1782,14 +1782,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(cl)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Chile')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Chile');
 						}
 						else {
 							member.roles.add(cl)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Chile')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Chile');
@@ -1854,14 +1854,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(ar)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Argentina')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Argentina');
 						}
 						else {
 							member.roles.add(ar)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais Argentina')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais Argentina');
@@ -1926,14 +1926,14 @@ client.on(Events.InteractionCreate, async interaction => {
 							}
 
 							member.roles.add(es)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais España')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais España');
 						}
 						else {
 							member.roles.add(es)
-							interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
+							await interaction.reply({ content: "Recibiste el rol correctamente!", ephemeral: true })
 							console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió correctamente un rol de pais España')
 							const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 							log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió correctamente un rol de pais España');
@@ -2020,7 +2020,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		if (choice == 'first_option') {
 			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
-				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
+				await interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
 				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' intento entrar a un reino pero ya pertenecia a otro');
@@ -2036,7 +2036,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		else if (choice == 'second_option') {
 			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
-				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
+				await interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
 				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' intento entrar a un reino pero ya pertenecia a otro');
@@ -2052,7 +2052,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		else if (choice == 'third_option') {
 			if (member.roles.cache.some(role => role.id == rollautaco || role.id == rolnate || role.id == rolghost || role.id == rolmaster)) {
-				interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
+				await interaction.reply({ content: "No puedes unirte a un reino si ya perteneces a otro.", ephemeral: true })
 				console.log('[', '!'.yellow, ']', 'El usuario ', interaction.user.username, ' intento entrar a un reino pero ya pertenecia a otro')
 				const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 				log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' intento entrar a un reino pero ya pertenecia a otro');
