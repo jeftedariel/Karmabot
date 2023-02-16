@@ -11,6 +11,7 @@ const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
 const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscord, r1m, r2m, r3m, r4m } = require('./roles.json');
+const { url } = require('node:inspector');
 dotenv.config();
 require('./');
 
@@ -53,8 +54,8 @@ for (const file of commandFiles) {
 		client.commands.set(command.data.name, command);
 	} else {
 		console.log('[', '!'.yellow, ']', `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
-		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-		log.send('[ ! ] ' + `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
+		//const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		//log.send('[ ! ] ' + `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
 	}
 }
 
@@ -77,59 +78,44 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 //=======================================
-//     Sistema de Bienvenidas (WIP)
+//     Sistema de Bienvenidas 1.0
 //=======================================
 
-const applyText = (canvas, text) => {
-	const context = canvas.getContext('2d');
-	let fontSize = 70;
-
-	do {
-		context.font = `${fontSize -= 10}px sans-serif`;
-	} while (context.measureText(text).width > canvas.width - 300);
-
-	return context.font;
-};
-
 client.on("guildMemberAdd", (member) => {
-	const canvas = Canvas.createCanvas(700, 250);
-	const context = canvas.getContext('2d');
 
-	const background = readFile('./img/bienvenida.png');
-	const backgroundImage = new Image();
-	backgroundImage.src = background;
-	context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+	const bienvenida = new EmbedBuilder()
+	.setColor(0x0099FF)
+	.setTitle('Bienvenido/a')
+	.setDescription(`Hola! ${member.user} espero que disfrutes de tu estadia en el servidor.`)
+	.setImage('https://media.giphy.com/media/a9dGnkMNSSwDeR8Xii/giphy.gif')
+	.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
-	context.strokeStyle = '#0099ff';
-	context.strokeRect(0, 0, canvas.width, canvas.height);
-
-	context.font = '28px sans-serif';
-	context.fillStyle = '#ffffff';
-	context.fillText('Bienvenid@!', canvas.width / 2.5, canvas.height / 3.5);
-
-	context.font = applyText(canvas, `${member.user.username}!`);
-	context.fillStyle = '#ffffff';
-	context.fillText(`${member.user.username}`, canvas.width / 2.5, canvas.height / 1.8);
-
-	context.beginPath();
-	context.arc(125, 125, 100, 0, Math.PI * 2, true);
-	context.closePath();
-	context.clip();
-
-	const { body } = request(member.avatarURL({ format: 'jpg' }));
-	const avatar = new Image();
-	avatar.src = Buffer.from(body.arrayBuffer());
-	context.drawImage(avatar, 25, 25, 200, 200);
-
-	const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'profile-image.png' });
-
-	const channel = client.channels.cache.find(channel => channel.id === "1065028049877348382")
-	channel.send({ files: [attachment] });
-
-	console.log(`New User "${member.user.username}" has joined "${member.guild.name}"`);
+	const channel = client.channels.cache.find(channel => channel.id === "1058954445171462216")
+	const memberRole = '1058921411965616210';       
+	channel.send( { embeds: [bienvenida] } )
+	member.roles.add(memberRole)
+	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+	log.send('[ ! ] ' + `El usuario ${member.user} se ha unido al discord`);
+	console.log('[', '!'.green, ']', `El usuario ${member.user} se ha unido al discord`);
 
 });
 
+client.on("guildMemberRemove", (member) => {
+
+	const despedida = new EmbedBuilder()
+	.setColor(0x0099FF)
+	.setTitle('Adios!')
+	.setDescription(`Fue un gusto tenerte aqui ${member.user}.`)
+	.setImage('https://media.giphy.com/media/QuCG1LqQ4PKpvxEvSP/giphy.gif')
+	.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+
+	const channel = client.channels.cache.find(channel => channel.id === "1058954447113441310")    
+	channel.send( { embeds: [despedida] } )
+	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+	log.send('[ ! ] ' + `El usuario ${member.user} se ha ido del discord`);
+	console.log('[', '!'.green, ']', `El usuario ${member.user} se ha ido del discord`);
+
+});
 
 //=======================================
 //     Sistema de Moderación V1.2
