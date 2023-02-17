@@ -3,6 +3,7 @@ const path = require('node:path');
 const Canvas = require('@napi-rs/canvas');
 const dotenv = require('dotenv');
 const blacklisted = require('./blacklist.json');
+const Levels = require('discord.js-leveling')
 //const mcping = require('mcping-js')
 //const server = new mcping.MinecraftServer('', 25565)
 const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEvent, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, embedLength, EmbedBuilder, ButtonBuilder, ButtonStyle, Message, StringSelectMenuBuilder, AttachmentBuilder, MessageSelectMenu } = require('discord.js');
@@ -14,6 +15,8 @@ const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscor
 const { url } = require('node:inspector');
 dotenv.config();
 require('./');
+
+const {loadEvents} = require('./Handlers/eventHandler');
 
 
 //=======================================
@@ -2090,6 +2093,9 @@ client.on(Events.InteractionCreate, async interaction => {
 // Esto avisará cuando el bot esté iniciado correctamente.
 //========================================================
 client.once(Events.ClientReady, c => {
+
+	
+
 	console.log('[', '!'.green, ']', `Listo!, Bot logeado como ${c.user.tag}`);
 	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 	log.send('[ ! ] ' + `Listo!, Bot logeado como ${c.user.tag}`);
@@ -2098,6 +2104,7 @@ client.once(Events.ClientReady, c => {
 		activities: [{ name: `MC 1.16.5 👀`, type: ActivityType.Playing }],
 		status: 'idle',
 	});
+
 });
 
 
@@ -2209,4 +2216,6 @@ client.on(Events.InteractionCreate, async interaction => {
 //=============================================
 // Esto tomará el token desde el archivo .env
 //=============================================
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN).then(() => {
+	loadEvents(client);
+})
