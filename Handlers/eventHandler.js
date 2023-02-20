@@ -1,7 +1,7 @@
 function loadEvents(client) {
     const ascii = require('ascii-table');
     const fs = require('node:fs');
-    const table = new ascii().setHeading('Events', 'Status');
+    const table = new ascii().setHeading('Eventos', 'Estado');
 
     const folders = fs.readdirSync('./Events');
     for (const folder of folders) {
@@ -24,7 +24,7 @@ function loadEvents(client) {
                     client.once(event.name, (...args) => event.execute(...args,client));
                 else client.on(event.name, (...args) => event.execute(...args,client));
             }
-            table.addRow(file, "loaded");
+            table.addRow(file, "Cargado");
             continue;
         }
     }

@@ -13,7 +13,7 @@ function loadCommands(client) {
             const commandFile = require(`../comandos/${folder}/${file}`)
             client.commands.set(commandFile.data.name, commandFile);
             commandsArray.push(commandFile.data.toJSON());
-            table.addRow(file, "Cargados");
+            table.addRow(file, "Cargado");
             continue;
         }
     }
