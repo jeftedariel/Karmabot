@@ -28,7 +28,7 @@ function loadEvents(client) {
             continue;
         }
     }
-    return console.log(table.toString(), '\n Loaded Events');
+    return console.log(table.toString(), '\n [', '!'.magenta, ']', `Eventos cargados correctamente.`)
 }
 
 module.exports = {loadEvents};
