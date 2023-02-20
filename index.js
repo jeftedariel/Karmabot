@@ -39,9 +39,26 @@ const client = new Client({
 	],
 })
 
-//==========================
-// Logea el uso de comandos
-//==========================
+//=====================================
+//Carga los / desde la carpeta comandos
+//=====================================
+client.commands = new Collection();
+
+const commandsPath = path.join(__dirname, 'comandos');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+
+	if ('data' in command && 'execute' in command) {
+		client.commands.set(command.data.name, command);
+	} else {
+		console.log('[', '!'.yellow, ']', `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
+		//const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+		//log.send('[ ! ] ' + `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
+	}
+}
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
