@@ -22,7 +22,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -95,7 +94,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -167,7 +165,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -239,7 +236,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -311,7 +307,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -383,7 +378,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -455,7 +449,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -527,7 +520,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -599,7 +591,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -671,7 +662,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -743,7 +733,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -815,7 +804,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -887,7 +875,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -959,7 +946,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -1031,7 +1017,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -1103,7 +1088,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -1175,7 +1159,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
@@ -1247,7 +1230,6 @@ module.exports = {
                                     }
                                     if (member.roles.cache.some(role => role.id == mx)) {
                                         member.roles.remove(mx)
-                                        console.log('a')
                                     }
                                     if (member.roles.cache.some(role => role.id == gt)) {
                                         member.roles.remove(gt)
