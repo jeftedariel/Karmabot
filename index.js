@@ -20,11 +20,7 @@ const {loadEvents} = require('./Handlers/eventHandler');
 const {loadCommands} = require('./Handlers/commandHandler');
 
 
-//=======================================
-//     DEBUG MODE, 0 OR 1
-//=======================================
 
-const debuglog = 0
 
 //============================================================
 // Esto se encargará de crear una nueva instancia para el bot
