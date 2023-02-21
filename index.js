@@ -152,27 +152,8 @@ client.on('messageCreate', (message) => {
 
 
 
-//========================================================
-// Esto avisará cuando el bot esté iniciado correctamente.
-//========================================================
-client.once(Events.ClientReady, c => {	
-	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-	log.send('[ ! ] ' + `Listo!, Bot logeado como ${c.user.tag}`);
-	// Aquí se establece la actividad del bot y su estado (Online, Ausente, no molestar)	
-	client.user.setPresence({
-		activities: [{ name: `Administrar Karmafans🔧`, type: ActivityType.Playing }],
-		status: 'online',
-	});
-
-});
 
 
-const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-client.on("error", (e) => console.error('[', '!'.red, ']', e));
-client.on("warn", (e) => console.warn('[', '!'.yellow, ']', e));
-if (debuglog === 1) {
-	client.on("debug", (e) => console.info('[', '!'.blue, ']', e));
-}
 
 //===========================================
 //Esto se encarga de construir el formulario

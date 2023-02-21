@@ -1,7 +1,13 @@
-const { ActivityType} = require('discord.js');
+const { ActivityType } = require('discord.js');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+
+//=======================================
+//     DEBUG MODE, 0 OR 1
+//=======================================
+
+const debuglog = 0
 
 dotenv.config();
 
@@ -19,7 +25,13 @@ module.exports = {
 
         const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
         console.log('[', '!'.green, ']', `Listo!, ${client.user.username} iniciado correctamente`)
-	    log.send('[ ! ] ' + `Listo!, ${client.user.username} iniciado correctamente`);
-        client.user.setPresence({ activities: [{ name: `MC 1.16.5 👀`, type: ActivityType.Playing }], status: 'idle'});
+        log.send('[ ! ] ' + `Listo!, ${client.user.username} iniciado correctamente`);
+        client.user.setPresence({ activities: [{ name: `MC 1.16.5 👀`, type: ActivityType.Playing }], status: 'idle' });
+
+        client.on("error", (e) => console.error('[', '!'.red, ']', e));
+        client.on("warn", (e) => console.warn('[', '!'.yellow, ']', e));
+        if (debuglog === 1) {
+            client.on("debug", (e) => console.info('[', '!'.blue, ']', e));
+        }
     }
 }    
