@@ -15,8 +15,10 @@ module.exports = {
     name: 'ready',
     once: true,
     async execute(client) {
+        mongoose.set('strictQuery', true);
         await mongoose.connect(process.env.MONGODB || '', {
             keepAlive: true,
+            
         });
 
         if (mongoose.connect) {
