@@ -51,9 +51,9 @@ module.exports = {
 
             const Anuncio = new EmbedBuilder()
                 .setColor(0x0099FF)
-                .setTitle('Mantenimiento')
-                .setDescription('Hola Karmafans! \n \n El servidor va a estar en mantenimiento por aproximadamente una hora para cambiar algunos mods y tratar de mejorar los FPS de los jugadores.')
-                .setImage('https://media.giphy.com/media/zDuStFVpRJIZ2/giphy.gif')
+                .setTitle('Anuncio')
+                .setDescription('Hola Karmafans! \n \n El servidor está abierto nuevamente, Se realizaron cambios en el modpack, esto para intentar mejorar un poco los fps, todavia se está trabajando en mejorar.')
+                .setImage('https://media.giphy.com/media/zLQF9LMoC5tf4YceMh/giphy.gif')
                 .setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
             const Anuncioboton = new ActionRowBuilder()
                 .addComponents(
@@ -66,7 +66,6 @@ module.exports = {
                 const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
                 const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
                 channel.send({ embeds: [Anuncio] });
-                channel.send('<@1072738166064287845>');
                 //channeltest.send({ embeds: [Anuncio], components: [Anuncioboton] });
                 message.delete()
                 console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
@@ -99,7 +98,6 @@ module.exports = {
                 const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
                 const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
                 channel.send({ embeds: [Anuncio] });
-                channel.send('<@1072738200906387496>');
                 //channeltest.send({ embeds: [Anuncio], components: [Anuncioboton] });
                 message.delete()
                 console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)
@@ -132,7 +130,6 @@ module.exports = {
                 const channel = client.channels.cache.find(channel => channel.id === "1058921412632518748")
                 const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")
                 channel.send({ embeds: [Anuncio] });
-                channel.send('<@1072738044718886952>');
                 //channeltest.send({ embeds: [Anuncio], components: [Anuncioboton] });
                 message.delete()
                 console.log('[', '!'.green, ']', 'Anuncio enviado exitosamente por', message.author.username)

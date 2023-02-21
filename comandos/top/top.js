@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('Muestra el top XP del discord'),
 	async execute(interaction) {
 
-        const { guildId } = interactions;
+        const { guildId } = interaction;
 
 		const rawLeaderboard = await Levels.fetchLeaderboard(guildId, 10)
 

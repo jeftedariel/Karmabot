@@ -1,7 +1,7 @@
 const { ActivityType } = require('discord.js');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
+const Levels = require('discord.js-leveling')
 
 //=======================================
 //     DEBUG MODE, 0 OR 1
@@ -24,6 +24,8 @@ module.exports = {
         if (mongoose.connect) {
             console.log('[', '!'.green, ']', 'MongoDB Conectado exitosamente.')
         }
+
+        Levels.setURL(process.env.MONGODB)
 
         const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
         console.log('[', '!'.green, ']', `Listo!, ${client.user.username} iniciado correctamente`)

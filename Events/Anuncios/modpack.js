@@ -15,13 +15,14 @@ module.exports = {
                 .setColor(0x0099FF)
                 .setTitle('IP y Modpack Java 1.16.5')
                 .setDescription('```mc.karmafans.xyz```')
+                .setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
             const Anuncioboton = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
                         .setLabel('Descargar')
-                        .setURL("https://www.mediafire.com/file/ike6w9js188e408/mods_y_nada_mas_que_mod.rar/file")
+                        .setURL("https://cdn.discordapp.com/attachments/1065284818532827177/1077443023396405249/mods1.2.rar")
                         .setStyle(ButtonStyle.Link),
-                )
+                ) 
             if (/assddaszxxxxdddcvzxxnopiqn3d45f/i.test(message.content)) {
                 const channel = client.channels.cache.find(channel => channel.id === "1074320286079533188")
                 const channeltest = client.channels.cache.find(channel => channel.id === "1065028049877348382")

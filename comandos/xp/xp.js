@@ -11,9 +11,9 @@ module.exports = {
 		),
 	async execute(interaction) {
 
-        const { options, guildId, user } = interactions;
+        const { options, guildId, user } = interaction;
 
-		const member = options.getMember('usuario') || user;
+		const member = options.getMember('user') || user;
 
 		const levelUser = await Levels.fetch(member.id, guildId);
 
