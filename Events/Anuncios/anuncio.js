@@ -13,9 +13,9 @@ module.exports = {
 
             const Anuncio = new EmbedBuilder()
                 .setColor(0x0099FF)
-                .setTitle('Anuncio')
-                .setDescription('Hola Karmafans! \n \n Se ha desarrollado un nuevo canal llamado <#1072303969768046652> \n \n En el podrán elegir algunos roles, se estarán integrando categorias en este canal en el transcurso de los dias, cualquier error o bug con Karmabot pueden enviarle un DM a <@370373584755097601>.')
-                .setImage('https://media.giphy.com/media/BdZJKjOM2CKqIklqnH/giphy.gif')
+                .setTitle('Mantenimiento')
+                .setDescription('Hola Karmafans! \n \n El servidor va a estar en mantenimiento por aproximadamente una hora para cambiar algunos mods y tratar de mejorar los FPS de los jugadores.')
+                .setImage('https://media.giphy.com/media/zDuStFVpRJIZ2/giphy.gif')
                 .setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
             const Anuncioboton = new ActionRowBuilder()
                 .addComponents(
