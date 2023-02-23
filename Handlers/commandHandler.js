@@ -17,7 +17,7 @@ function loadCommands(client) {
             continue;
         }
     }
-
+    
     client.application.commands.set(commandsArray);
     return console.log(table.toString(), '\n [', '!'.magenta, ']', `Comandos cargados correctamente.`)
 

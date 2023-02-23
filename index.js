@@ -51,8 +51,7 @@ for (const file of commandFiles) {
 		client.commands.set(command.data.name, command);
 	} else {
 		console.log('[', '!'.yellow, ']', `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
-		//const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-		//log.send('[ ! ] ' + `Al comando ${filePath} le faltan las propiedades DATA y EXECUTE.`);
+
 	}
 }
 
