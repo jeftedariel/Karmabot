@@ -31,9 +31,15 @@ const client = new Client({
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildVoiceStates
 
 	],
 })
+
+
+
+
+
 
 //=====================================
 //Carga los / desde la carpeta comandos
@@ -117,6 +123,26 @@ client.on("guildMemberRemove", (member) => {
 //     Sistema de Moderación V1.2
 //=======================================
 
+client.on('messageCreate', (message => {
+	if (!message.author.bot) {
+
+
+	const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; //min1 max30
+	const hasLeveledUp = Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+
+	//if (hasLeveledUp) {
+	//	const user = Levels.fetch(message.author.id, message.guild.id);
+	//
+	//	const levelEmbed = new EmbedBuilder()
+	//		.setTitle('¡Subiste de Nivel!')
+	//		.setDescription(`Felicidades ${message.author} Subiste al nivel **${user.level + 1}**!`)
+	//		.setColor('Random')
+	//		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+	//	const sendEmbed = message.channel.send({embeds: [levelEmbed]})
+	//}
+}
+}));
+
 client.on('messageCreate', (message) => {
 	const Aviso = new EmbedBuilder()
 		.setColor(0x0099FF)
@@ -128,12 +154,76 @@ client.on('messageCreate', (message) => {
 	let check = false
 	for (var palabra in blacklisted) {
 		if (!message.author.bot) {
-			const arrword = message.content.split(/\s+/)
+			const general = client.channels.cache.find(channel => channel.id === "1058921412632518754")
+			const mchat = client.channels.cache.find(channel => channel.id === "1076990833976418455")
+			const ideas = client.channels.cache.find(channel => channel.id === "1058921412800299070")
+			const memes = client.channels.cache.find(channel => channel.id === "1062501234159923261")
+			const arte = client.channels.cache.find(channel => channel.id === "1060344590567215165")
+			const fotos = client.channels.cache.find(channel => channel.id === "1058921412800299072")
+			const tecno = client.channels.cache.find(channel => channel.id === "1072724870632312904")
 
-			const lowerword = arrword.map(element => {
-				return element.toLowerCase();
-			});
-			if (lowerword.includes(blacklisted[palabra])) check = true
+			if (message.channel.id === general.id) {
+				const arrword = message.content.split(/\s+/)
+
+				const lowerword = arrword.map(element => {
+					return element.toLowerCase();
+				});
+				if (lowerword.includes(blacklisted[palabra])) check = true
+			}
+			
+			if (message.channel.id === mchat.id) {
+				const arrword = message.content.split(/\s+/)
+
+				const lowerword = arrword.map(element => {
+					return element.toLowerCase();
+				});
+				if (lowerword.includes(blacklisted[palabra])) check = true
+			}
+
+			if (message.channel.id === ideas.id) {
+				const arrword = message.content.split(/\s+/)
+
+				const lowerword = arrword.map(element => {
+					return element.toLowerCase();
+				});
+				if (lowerword.includes(blacklisted[palabra])) check = true
+			}
+
+			if (message.channel.id === memes.id) {
+				const arrword = message.content.split(/\s+/)
+
+				const lowerword = arrword.map(element => {
+					return element.toLowerCase();
+				});
+				if (lowerword.includes(blacklisted[palabra])) check = true
+			}
+
+			if (message.channel.id === arte.id) {
+				const arrword = message.content.split(/\s+/)
+
+				const lowerword = arrword.map(element => {
+					return element.toLowerCase();
+				});
+				if (lowerword.includes(blacklisted[palabra])) check = true
+			}
+
+			if (message.channel.id === fotos.id) {
+				const arrword = message.content.split(/\s+/)
+
+				const lowerword = arrword.map(element => {
+					return element.toLowerCase();
+				});
+				if (lowerword.includes(blacklisted[palabra])) check = true
+			}
+
+			if (message.channel.id === tecno.id) {
+				const arrword = message.content.split(/\s+/)
+
+				const lowerword = arrword.map(element => {
+					return element.toLowerCase();
+				});
+				if (lowerword.includes(blacklisted[palabra])) check = true
+			}
 		}
 	}
 	if (check) {
@@ -246,30 +336,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isModalSubmit()) return;
-	if (interaction.customId === 'anunciom') {
-		
-		const { channel, options } = interaction;
-		const gif = require('./comandos/anuncio/gifs.json');
-		const Grandom = gif[Math.floor(gif.length*Math.random())]
 
-		const titulo = interaction.fields.getTextInputValue('titleinput')
-		const desc = interaction.fields.getTextInputValue('descinput')
-
-		const embed = new EmbedBuilder()
-		.setTitle(titulo)
-		.setDescription(desc)
-		.setImage(Grandom)
-		.setColor(5763719)
-		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' })
-		.setTimestamp();
-
-	await channel.send({ embeds: [embed] });
-	interaction.reply({ content: 'Anuncio enviado correctamente', ephemeral: true });
-		}
-
-});
 
 //=============================================
 // Esto tomará el token desde el archivo .env

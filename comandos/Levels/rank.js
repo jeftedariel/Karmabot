@@ -6,7 +6,7 @@ module.exports = {
 		.setName('xp')
 		.setDescription('Muestra la xp y cantidad de puntos')
 		.addUserOption(option =>
-			option.setName('usuario')
+			option.setName('user')
 				.setDescription('Elige un Usuario')
 		),
 	async execute(interaction) {
@@ -21,8 +21,8 @@ module.exports = {
 
 		if (!levelUser) return interaction.reply({ content: 'Parece que aun no tienes XP', ephemeral: true });
         
-		embed.setDescription(`El usuario ${member.tag} actualmente es nivel ${levelUser.level} y tiene ${levelUser.xp.toLocalString()} xp.`)
-			.setColor('random').setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+		embed.setDescription(`El usuario ${member.tag} actualmente es nivel ${levelUser.level} y tiene ${levelUser.xp.toLocaleString()} xp.`)
+			.setColor(0x0099FF).setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
 		return interaction.reply({ embeds: [embed]});
 	},

@@ -1,15 +1,13 @@
 const { EmbedBuilder, RequestManager } = require('discord.js');
 const Levels = require('discord.js-leveling');
-const { execute } = require('../Client/ready');
 
 module.exports = {
     name: 'MessageCreate',
 
     async execute(message) {
-        if (!message.guild || message.author.bot) return;
+        if (!message.author.bot) return;
 
-        if (message.content.lenght < 3) return;
-
+        console.log("xp")
         const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; //min1 max30
         const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
 
