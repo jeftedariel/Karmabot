@@ -337,6 +337,30 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isModalSubmit()) return;
+	if (interaction.customId === 'anunciom') {
+		
+		const { channel, options } = interaction;
+		const gif = require('./comandos/anuncio/gifs.json');
+		const Grandom = gif[Math.floor(gif.length*Math.random())]
+
+		const titulo = interaction.fields.getTextInputValue('titleinput')
+		const desc = interaction.fields.getTextInputValue('descinput')
+
+		const embed = new EmbedBuilder()
+		.setTitle(titulo)
+		.setDescription(desc)
+		.setImage(Grandom)
+		.setColor(5763719)
+		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' })
+		.setTimestamp();
+
+	await channel.send({ embeds: [embed] });
+	interaction.reply({ content: 'Anuncio enviado correctamente', ephemeral: true });
+		}
+
+});
 
 //=============================================
 // Esto tomará el token desde el archivo .env
