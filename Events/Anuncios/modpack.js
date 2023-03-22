@@ -20,7 +20,7 @@ module.exports = {
                 .addComponents(
                     new ButtonBuilder()
                         .setLabel('Descargar')
-                        .setURL("https://cdn.discordapp.com/attachments/1065284818532827177/1077443023396405249/mods1.2.rar")
+                        .setURL("https://github.com/JEFTEDARIEL123/modpack-1.18/zipball/master/")
                         .setStyle(ButtonStyle.Link),
                 ) 
             if (/assddaszxxxxdddcvzxxnopiqn3d45f/i.test(message.content)) {
