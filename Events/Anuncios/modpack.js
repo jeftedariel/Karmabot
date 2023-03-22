@@ -14,7 +14,7 @@ module.exports = {
             const Anuncio = new EmbedBuilder()
                 .setColor(0x0099FF)
                 .setTitle('IP y Modpack Java 1.18 (SERVIDOR TEMPORAL)')
-                .setDescription('```temp.karmafans.xyz```')
+                .setDescription('```temp.karmafans.xyz:40049```')
                 .setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
             const Anuncioboton = new ActionRowBuilder()
                 .addComponents(
