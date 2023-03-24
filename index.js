@@ -126,8 +126,7 @@ client.on("guildMemberRemove", (member) => {
 client.on(Events.MessageCreate, async message => {
 
 	if (!message.guild || message.author.bot) return;
-	
-	console.log("xp")
+
 	const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; //min1 max30
 	const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
 
