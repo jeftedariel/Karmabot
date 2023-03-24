@@ -18,6 +18,7 @@ require('./');
 
 const {loadEvents} = require('./Handlers/eventHandler');
 const {loadCommands} = require('./Handlers/commandHandler');
+const MessageCreate = require('./Events/Messages/MessageCreate');
 
 
 
@@ -122,26 +123,26 @@ client.on("guildMemberRemove", (member) => {
 //=======================================
 //     Sistema de Moderación V1.2
 //=======================================
+client.on(Events.MessageCreate, async message => {
 
-client.on('messageCreate', (message => {
-	if (!message.author.bot) {
-
-
+	if (!message.guild || message.author.bot) return;
+	
+	console.log("xp")
 	const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; //min1 max30
-	const hasLeveledUp = Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+	const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
 
-	//if (hasLeveledUp) {
-	//	const user = Levels.fetch(message.author.id, message.guild.id);
-	//
-	//	const levelEmbed = new EmbedBuilder()
-	//		.setTitle('¡Subiste de Nivel!')
-	//		.setDescription(`Felicidades ${message.author} Subiste al nivel **${user.level + 1}**!`)
-	//		.setColor('Random')
-	//		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
-	//	const sendEmbed = message.channel.send({embeds: [levelEmbed]})
-	//}
-}
-}));
+	if (hasLeveledUp) {
+		const user = await Levels.fetch(message.author.id, message.guild.id);
+
+		const levelEmbed = new EmbedBuilder()
+			.setTitle('¡Subiste de Nivel!')
+			.setDescription(`Felicidades ${message.author} Subiste al nivel **${user.level}**!`)
+			.setColor('Random')
+			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+		const sendEmbed = await message.channel.send({embeds: [levelEmbed]})
+		sendEmbed.react('⚡')
+	}
+});
 
 client.on('messageCreate', (message) => {
 	const Aviso = new EmbedBuilder()
