@@ -382,28 +382,30 @@ client.on(Events.InteractionCreate, async interaction => {
 		const embed = new EmbedBuilder()
 		.setTitle(titulo)
 		.setDescription(desc)
-		.setColor(5763719)
-		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' })
+		.setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
+		.setColor('Random')
 		.setTimestamp();
 
-	await channel.send({ embeds: [embed], components: [menu] });
-
-	const menu = new ActionRowBuilder()
-	.addComponents(
-		new StringSelectMenuBuilder()
-			.setCustomId('autorole')
-			.setPlaceholder('-> Click aqui <-')
-			.addOptions(
-				{
-					label: 'Unirme',
-					value: 'join_option',
-					emoji: {
-						name: 'galleta',
-						id: '1089203658316599416'
+		const menu = new ActionRowBuilder()
+		.addComponents(
+			new StringSelectMenuBuilder()
+				.setCustomId('autorole')
+				.setPlaceholder('-> Click aqui <-')
+				.setMinValues(1)
+				.setMaxValues(1)
+				.addOptions(
+					{
+						label: 'Unirme',
+						value: 'join_option',
+						emoji: {
+							name: 'galleta',
+							id: '1089203658316599416'
+						},
 					},
-				},
-			),
-	);
+				),
+		);
+
+	await channel.send({ embeds: [embed], components: [menu] });
 	interaction.reply({ content: 'Anuncio enviado correctamente', ephemeral: true });
 		}
 
