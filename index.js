@@ -337,6 +337,10 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 
+
+// =============================
+// Crea el Embed de anuncio
+// =============================
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isModalSubmit()) return;
 	if (interaction.customId === 'anunciom') {
@@ -351,12 +355,55 @@ client.on(Events.InteractionCreate, async interaction => {
 		const embed = new EmbedBuilder()
 		.setTitle(titulo)
 		.setDescription(desc)
-		.setImage(Grandom)
 		.setColor(5763719)
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' })
 		.setTimestamp();
 
+
 	await channel.send({ embeds: [embed] });
+	interaction.reply({ content: 'Autorole enviado correctamente', ephemeral: true });
+		}
+
+});
+
+
+// =============================
+// Crea el Embed de crear autorole
+// =============================
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isModalSubmit()) return;
+	if (interaction.customId === 'cautorole') {
+		
+		const { channel, options } = interaction;
+
+		const titulo = interaction.fields.getTextInputValue('titleinput')
+		const desc = interaction.fields.getTextInputValue('descinput')
+
+		const embed = new EmbedBuilder()
+		.setTitle(titulo)
+		.setDescription(desc)
+		.setColor(5763719)
+		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' })
+		.setTimestamp();
+
+	await channel.send({ embeds: [embed], components: [menu] });
+
+	const menu = new ActionRowBuilder()
+	.addComponents(
+		new StringSelectMenuBuilder()
+			.setCustomId('autorole')
+			.setPlaceholder('-> Click aqui <-')
+			.addOptions(
+				{
+					label: 'Unirme',
+					value: 'join_option',
+					emoji: {
+						name: 'galleta',
+						id: '1089203658316599416'
+					},
+				},
+			),
+	);
 	interaction.reply({ content: 'Anuncio enviado correctamente', ephemeral: true });
 		}
 
