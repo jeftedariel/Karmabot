@@ -139,7 +139,6 @@ client.on(Events.MessageCreate, async message => {
 			.setColor('Random')
 			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 		const sendEmbed = await message.channel.send({embeds: [levelEmbed]}).then(msg => setTimeout(() => msg.delete(), 10000));
-		sendEmbed.react('⚡')
 	}
 });
 
