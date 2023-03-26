@@ -11,7 +11,7 @@ const { colors, yellow } = require('colors');
 const { channel } = require('node:diagnostics_channel');
 const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
-const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscord, us, mx, gt, hn, sv, ni, cr, pa, co, ve, ec, pe, bo, py, uy, cl, ar, es,  r1m, r2m, r3m, r4m } = require('./roles.json');
+const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscord, us, mx, gt, hn, sv, ni, cr, pa, co, ve, ec, pe, bo, py, uy, cl, ar, es, participante } = require('./roles.json');
 const { url } = require('node:inspector');
 dotenv.config();
 require('./');
@@ -384,15 +384,12 @@ client.on(Events.InteractionCreate, async interaction => {
 		.setDescription(desc)
 		.setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
 		.setColor('Random')
-		.setTimestamp();
 
 		const menu = new ActionRowBuilder()
 		.addComponents(
 			new StringSelectMenuBuilder()
 				.setCustomId('autorole')
 				.setPlaceholder('-> Click aqui <-')
-				.setMinValues(1)
-				.setMaxValues(1)
 				.addOptions(
 					{
 						label: 'Unirme',
@@ -406,7 +403,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		);
 
 	await channel.send({ embeds: [embed], components: [menu] });
-	interaction.reply({ content: 'Anuncio enviado correctamente', ephemeral: true });
+	interaction.reply({ content: 'Autorole enviado correctamente', ephemeral: true });
 		}
 
 });
