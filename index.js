@@ -68,9 +68,9 @@ client.on(Events.InteractionCreate, async interaction => {
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) return;
-	console.log('[', '!'.green, ']', 'El usuario', interaction.user.username, 'ejecutó exitosamente el comando:', interaction.commandName)
+	console.log('[', '!'.green, ']', 'El usuario', interaction.user.username, 'ejecutó el comando:', interaction.commandName)
 	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-	log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó exitosamente el comando: ' + interaction.commandName);
+	log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' ejecutó el comando: ' + interaction.commandName);
 
 	try {
 		await command.execute(interaction);
@@ -99,7 +99,7 @@ client.on("guildMemberAdd", (member) => {
 	member.roles.add(memberRole)
 	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 	log.send('[ ! ] ' + `El usuario ${member.user} se ha unido al discord`);
-	console.log('[', '!'.green, ']', `El usuario ${member.user} se ha unido al discord`);
+	console.log('[', '!'.green, ']', `El usuario ${member.user.username} se ha unido al discord`);
 
 });
 
@@ -139,6 +139,10 @@ client.on(Events.MessageCreate, async message => {
 			.setColor('Random')
 			.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 		const sendEmbed = await message.channel.send({embeds: [levelEmbed]}).then(msg => setTimeout(() => msg.delete(), 10000));
+        
+        const log = client.channels.cache.find(channel => channel.id === "1069336879968813158") 
+        log.send('[ ! ] ' + `El usuario ${message.author} ha subido al nivel ${user.level}`)
+        console.log('[', '!'.green, '] ' + `El usuario ${message.author.username} ha subido al nivel ${user.level}`)
 	}
 });
 
@@ -226,9 +230,9 @@ client.on('messageCreate', (message) => {
 		}
 	}
 	if (check) {
-		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username, 'el cual contenia:', message.content)
+		console.log('[', '!'.green, ']', 'Se eliminó un mensaje del usuario', message.author.username , 'el cual contenia:', message.content)
 		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-		log.send('[ ! ] ' + 'Se eliminó un mensaje del usuario ' + message.author.username + ' el cual contenia: ' + message.content);
+		log.send('[ ! ] ' + 'Se eliminó un mensaje del usuario ' + "<@" + message.author + '>' + ' el cual contenia: ' + message.content);
 		setTimeout(() => message.delete(), 1);
 		message.author.send({ embeds: [Aviso] }).catch(console.error)
 	};
