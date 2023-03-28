@@ -4,8 +4,7 @@ const Canvas = require('@napi-rs/canvas');
 const dotenv = require('dotenv');
 const blacklisted = require('./blacklist.json');
 const Levels = require('discord.js-leveling')
-//const mcping = require('mcping-js')
-//const server = new mcping.MinecraftServer('', 25565)
+const util = require('util');
 const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEvent, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, embedLength, EmbedBuilder, ButtonBuilder, ButtonStyle, Message, StringSelectMenuBuilder, AttachmentBuilder, MessageSelectMenu } = require('discord.js');
 const { colors, yellow } = require('colors');
 const { channel } = require('node:diagnostics_channel');
@@ -13,6 +12,7 @@ const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
 const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscord, us, mx, gt, hn, sv, ni, cr, pa, co, ve, ec, pe, bo, py, uy, cl, ar, es, participante } = require('./roles.json');
 const { url } = require('node:inspector');
+
 dotenv.config();
 require('./');
 
@@ -21,6 +21,20 @@ const {loadCommands} = require('./Handlers/commandHandler');
 const MessageCreate = require('./Events/Messages/MessageCreate');
 
 
+
+const logFile = fs.createWriteStream('log.txt', { flags: 'a' });
+
+
+// Redirigir la salida de la consola
+console.log = function(message) {
+  const timestamp = new Date().toISOString();
+  const line = `${timestamp}: ${util.format(message)}\n`;
+  process.stdout.write(line);
+  logFile.write(line);
+};
+
+// Para detener el registro, podemos restaurar la salida de la consola predeterminada
+console.log = console.info;
 
 
 //============================================================
@@ -418,3 +432,6 @@ client.login(process.env.TOKEN).then(() => {
 	loadEvents(client);
 	loadCommands(client);
 })
+
+console.log('a')
+logFile.end();
