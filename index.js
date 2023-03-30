@@ -373,12 +373,13 @@ client.on(Events.InteractionCreate, async interaction => {
 		.setTitle(titulo)
 		.setDescription(desc)
 		.setColor(5763719)
+        .setImage(Grandom)
 		.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' })
 		.setTimestamp();
 
 
 	await channel.send({ embeds: [embed] });
-	interaction.reply({ content: 'Autorole enviado correctamente', ephemeral: true });
+	interaction.reply({ content: 'Anuncio enviado correctamente', ephemeral: true });
 		}
 
 });
@@ -421,6 +422,36 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	await channel.send({ embeds: [embed], components: [menu] });
 	interaction.reply({ content: 'Autorole enviado correctamente', ephemeral: true });
+		}
+
+});
+
+// =============================
+// Crea el Embed de Confesiones
+// =============================
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isModalSubmit()) return;
+	if (interaction.customId === 'confesion') {
+		
+        const channel = client.channels.cache.find(channel => channel.id === "1090804195235467394")
+		
+		const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
+
+
+		const desc = interaction.fields.getTextInputValue('descinput')
+
+		const embed = new EmbedBuilder()
+		.setTitle('Confesion Anonima')
+		.setDescription(desc)
+		.setColor('Random')
+        .setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' })
+		.setTimestamp();
+
+    log.send('[ ! ] ' + 'El usuario ' + '<@' + interaction.user.id + '>' + 'Envió una confesion');
+	const sendEmbed = await channel.send({embeds: [embed]})
+	sendEmbed.react(':si:1089275579221676035')
+    sendEmbed.react(':no:1089275578621886546')
+	interaction.reply({ content: 'Confesion enviada correctamente', ephemeral: true });
 		}
 
 });
