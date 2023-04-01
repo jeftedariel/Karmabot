@@ -1,6 +1,5 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const Canvas = require('@napi-rs/canvas');
 const dotenv = require('dotenv');
 const blacklisted = require('./blacklist.json');
 const Levels = require('discord.js-leveling')
@@ -464,5 +463,3 @@ client.login(process.env.TOKEN).then(() => {
 	loadCommands(client);
 })
 
-console.log('a')
-logFile.end();

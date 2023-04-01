@@ -17,18 +17,13 @@ module.exports = {
 
                             if (choice == 'join_option') {
                                 if (member.roles.cache.some(role => role.id == participante)) {
-                                    member.roles.remove(participante)
-                                    await interaction.reply({ content: "Has sido eliminado de la lista de Participantes. <:no:1089275578621886546>", ephemeral: true })
-                                    console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' eliminó su rol de Participante')
-                                    const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-                                    log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' eliminó su rol de Participante')
+                                    await interaction.reply({ content: "No puedes unirte de nuevo porque ya formas parte del evento. <:no:1089275578621886546>", ephemeral: true })
+                                    console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' ya es parte del evento.')
                                 }
                                 else {
                                     member.roles.add(participante)
                                     await interaction.reply({ content: "Has sido agregado a la lista de Participantes. <:si:1089275579221676035>", ephemeral: true })
                                     console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió el rol de Participante')
-                                    const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
-                                    log.send('[ ! ] ' + 'El usuario ' + interaction.user.username + ' recibió el rol de Participante');
                                 }
                             }
                         }
