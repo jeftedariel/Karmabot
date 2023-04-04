@@ -107,9 +107,7 @@ client.on("guildMemberAdd", (member) => {
 	.setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
 	const channel = client.channels.cache.find(channel => channel.id === "1058954445171462216")
-	const memberRole = '1058921411965616210';       
 	channel.send( { embeds: [bienvenida] } )
-	member.roles.add(memberRole)
 	const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 	log.send('[ ! ] ' + `El usuario ${member.user} se ha unido al discord`);
 	console.log('[', '!'.green, ']', `El usuario ${member.user.username} se ha unido al discord`);

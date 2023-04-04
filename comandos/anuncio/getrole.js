@@ -1,14 +1,19 @@
 const { EmbedBuilder } = require('@discordjs/builders');
 const { SlashCommandBuilder, ModalBuilder,ActionRowBuilder, TextInputBuilder, TextInputStyle, Embedbuilder, PermissionFlagsBits, Embed, client } = require('discord.js');
+const participante = require('../../roles.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('autorol')
 		.setDescription('Crea un autorol.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles),
-
+		.setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
+        .addRoleOption((option) => 
+        option.setName('rol').setDescription('Establece el rol').setRequired(true)
+        ),
 
 	async execute(interaction) {
+            const { options, guildId, user } = interaction;
+			let rolep = interaction.options.getRole('rol').id;
 			const modal = new ModalBuilder()
 				.setCustomId('cautorole')
 				.setTitle('Crea un auto role.');
@@ -36,11 +41,12 @@ module.exports = {
 			const firstActionRow = new ActionRowBuilder().addComponents(titleinput);
 			const secondActionRow = new ActionRowBuilder().addComponents(descinput);
 			const thirdActionRow = new ActionRowBuilder().addComponents(roleinput);
+        
 
 			modal.addComponents(firstActionRow, secondActionRow, thirdActionRow);
 
 			await interaction.showModal(modal);
-		
+		    
 		},
 		
 };

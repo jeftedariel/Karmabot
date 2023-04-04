@@ -2,7 +2,6 @@ const { Client, Collection, Events, GatewayIntentBits, ActivityType, AuditLogEve
 const { participante } = require('../../roles.json');
 const dotenv = require('dotenv');
 
-
 dotenv.config();
 
 module.exports = {
@@ -14,14 +13,15 @@ module.exports = {
                         if (interaction.customId === 'autorole') {
                             let choice = interaction.values[0]
                             const member = interaction.member
+                            const rolep = interaction.options.getRole('rol').id;
 
                             if (choice == 'join_option') {
-                                if (member.roles.cache.some(role => role.id == participante)) {
+                                if (member.roles.cache.some(role => role.id == rolep)) {
                                     await interaction.reply({ content: "No puedes unirte de nuevo porque ya formas parte del evento. <:no:1089275578621886546>", ephemeral: true })
                                     console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' ya es parte del evento.')
                                 }
                                 else {
-                                    member.roles.add(participante)
+                                    member.roles.add(rolep)
                                     await interaction.reply({ content: "Has sido agregado a la lista de Participantes. <:si:1089275579221676035>", ephemeral: true })
                                     console.log('[', '!'.green, ']', 'El usuario ', interaction.user.username, ' recibió el rol de Participante')
                                 }
