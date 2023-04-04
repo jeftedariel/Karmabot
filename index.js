@@ -11,6 +11,8 @@ const { Console } = require('node:console');
 const { MessageChannel } = require('node:worker_threads');
 const { rolmaster, rollautaco, rolnate, rolghost, roljava, rolbedrock, roldiscord, us, mx, gt, hn, sv, ni, cr, pa, co, ve, ec, pe, bo, py, uy, cl, ar, es, participante } = require('./roles.json');
 const { url } = require('node:inspector');
+const {DisTube} = require('distube');
+const { SpotifyPlugin } = require('@distube/spotify');
 
 dotenv.config();
 require('./');
@@ -92,6 +94,13 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({ content: 'Hubo un error tratando de ejecutar ese comando.', ephemeral: true });
 	}
 });
+
+client.distube = new DisTube(client, {
+    emitNewSongOnly: true,
+    leaveOnFinish: true,
+    emitAddSongWhenCreatingQueue: false,
+    plugins: [new SpotifyPlugin]
+})
 
 //=======================================
 //     Sistema de Bienvenidas 1.0
@@ -453,7 +462,8 @@ client.on(Events.InteractionCreate, async interaction => {
 
 });
 
-//=============================================
+module.exports = client;
+//============================================
 // Esto tomará el token desde el archivo .env
 //=============================================
 client.login(process.env.TOKEN).then(() => {
