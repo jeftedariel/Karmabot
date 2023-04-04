@@ -10,7 +10,6 @@
     "discord.js-leveling": "^5.4.0",
     "distube": "^4.0.4",
     "dotenv": "^16.0.3",
-    "ffmpeg-static": "^4.4.1",
     "libsodium-wrappers": "^0.7.11",
     "mongoose": "^6.9.2",
     "ms": "^2.1.3",

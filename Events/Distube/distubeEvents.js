@@ -2,13 +2,13 @@ const client = require("../../index.js");
 const { EmbedBuilder } = require("discord.js");
 
 const status = queue =>
-    `Volume: \`${queue.volume}%\` | Filter: \`${queue.filters.names.join(', ') || 'Off'}\` | Loop: \`${queue.repeatMode ? (queue.repeatMode === 2 ? 'All Queue' : 'This Song') : 'Off'
+    `Volumen: \`${queue.volume}%\` | Filtro: \`${queue.filters.names.join(', ') || 'Off'}\` | Loop: \`${queue.repeatMode ? (queue.repeatMode === 2 ? 'Fila' : 'This Song') : 'Off'
     }\` | Autoplay: \`${queue.autoplay ? 'On' : 'Off'}\``
 client.distube
     .on('playSong', (queue, song) =>
         queue.textChannel.send({
             embeds: [new EmbedBuilder().setColor("Green")
-                .setDescription(`🎶 | Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user
+                .setDescription(`🎶 | Sonando \`${song.name}\` - \`${song.formattedDuration}\`\nSolicitada: ${song.user
                     }\n${status(queue)}`)]
         })
     )
@@ -16,7 +16,7 @@ client.distube
         queue.textChannel.send(
             {
                 embeds: [new EmbedBuilder().setColor("Green")
-                    .setDescription(`🎶 | Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`)]
+                    .setDescription(`🎶 | Agregada ${song.name} - \`${song.formattedDuration}\` a la lista por ${song.user}`)]
             }
         )
     )
@@ -24,27 +24,27 @@ client.distube
         queue.textChannel.send(
             {
                 embeds: [new EmbedBuilder().setColor("Green")
-                    .setDescription(`🎶 | Added \`${playlist.name}\` playlist (${playlist.songs.length
-                        } songs) to queue\n${status(queue)}`)]
+                    .setDescription(`🎶 | Se agrego \`${playlist.name}\` playlist (${playlist.songs.length
+                        } canciones) a la lista\n${status(queue)}`)]
             }
         )
     )
     .on('error', (channel, e) => {
-        if (channel) channel.send(`⛔ | An error encountered: ${e.toString().slice(0, 1974)}`)
+        if (channel) channel.send(`⛔ | Ha ocurrido un error: ${e.toString().slice(0, 1974)}`)
         else console.error(e)
     })
     .on('empty', channel => channel.send({
         embeds: [new EmbedBuilder().setColor("Red")
-            .setDescription('⛔ |Voice channel is empty! Leaving the channel...')]
+            .setDescription('⛔ | Ya no hay nadie escuchando...')]
     }))
     .on('searchNoResult', (message, query) =>
         message.channel.send(
             {
                 embeds: [new EmbedBuilder().setColor("Red")
-                    .setDescription('`⛔ | No result found for \`${query}\`!`')]
+                    .setDescription('`⛔ | No se encontraron resultados para \`${query}\`!`')]
             })
     )
     .on('finish', queue => queue.textChannel.send({
         embeds: [new EmbedBuilder().setColor("Green")
-            .setDescription('🏁 | Queue finished!')]
+            .setDescription('🏁 | Lista Terminada!')]
     }))
