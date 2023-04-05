@@ -1,5 +1,5 @@
 const rrSchema = require('../../Models/ReactionRoles');
-const {SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ActionRowBuilder, SelectMenuBuilder} = require('discord.js');
+const {SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -16,8 +16,11 @@ module.exports = {
                     return interaction.reply({content: 'El servidor no tiene ninguna data guardada', ephemeral: true });
 
                 const panelEmbed = new EmbedBuilder()
-                    .setDescription('Selecciona uno de los roles')
-                    .setColor('Blue')
+                    .setTitle('AutoRoles')
+                    .setDescription('Debes Seleccionar uno.')
+                    .setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
+                    .setColor('Random')
+
                 const options = data.roles.map(x => {
                     const role = guild.roles.cache.get(x.roleId);
 
@@ -31,14 +34,14 @@ module.exports = {
 
                 const menuComponents = [
                     new ActionRowBuilder().addComponents(
-                        new SelectMenuBuilder()
-                        .setCustomId('reaction-roles')
-                        .setMaxValues(options.length)
-                        .addOptions(options),
+                        new StringSelectMenuBuilder()
+                            .setCustomId('reaction-roles')
+                            .setMaxValues(options.length)
+                            .addOptions(options),
                     ),
                 ];
 
-                channel.send({ embeds: [panelEmbed], components: [menuComponents] });
+                channel.send({ embeds: [panelEmbed], components: menuComponents });
 
                 return interaction.reply({ content: 'El menu se ha enviado correctamente', ephemeral: true});
             

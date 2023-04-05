@@ -24,7 +24,7 @@ module.exports = {
                     }
                 }
 
-                interaction.reply({ content: 'Tus roles han sido actualizados! <:si:1089275579221676035>'});
+                interaction.reply({ content: '<:si:1089275579221676035>  Tus roles han sido actualizados!', ephemeral: true});
             }
         } else {
             return;
