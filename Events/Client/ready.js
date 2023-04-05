@@ -34,7 +34,7 @@ module.exports = {
         log.send('[ ! ] ' + `Listo!, ${client.user.username} iniciado correctamente`);
         log.send('[ ! ] ' + `El bot está en ${client.guilds.cache.size} servidores`);
         
-        client.user.setPresence({ activities: [{ name: `Karmafans⚡`, type: ActivityType.Watching }], status: 'idle' });
+        client.user.setPresence({ activities: [{ name: `Musica con /rocola🎸`, type: ActivityType.Listening }], status: 'iddle' });
 
         client.on("error", (e) => console.error('[', '!'.red, ']', e));
         client.on("warn", (e) => console.warn('[', '!'.yellow, ']', e));
