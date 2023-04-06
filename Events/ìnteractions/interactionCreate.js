@@ -25,6 +25,7 @@ module.exports = {
                 }
 
                 interaction.reply({ content: '<:si:1089275579221676035>  Tus roles han sido actualizados!', ephemeral: true});
+                console.log('[', '!'.green, ']', `Se han actualizado los roles de ${member.username}, roles agregados: ${member.roles(roleId)}`);
             }
         } else {
             return;
