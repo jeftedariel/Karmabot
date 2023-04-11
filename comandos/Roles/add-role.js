@@ -33,7 +33,7 @@ module.exports = {
                 if (role.position >= member.roles.highest.position)
                     return interaction.reply({content: 'No tengo permisos para hacer eso', ephemeral: true});
                 
-                const data = await rrSchema.findOne({ guilID: guildId });
+                const data = await rrSchema.findOne({ GuildID: guildId });
 
                 const newRole = {
                     roleId: role.id,

@@ -5,8 +5,9 @@ module.exports = {
 
     async execute(interaction, client) {
         const { customId, values, guild, member} = interaction;
+        const log = client.channels.cache.find(channel => channel.id === "1069336879968813158")
 
-        if(interaction.isSelectMenu()) {
+        if(interaction.isStringSelectMenu()) {
             if (customId == 'reaction-roles') {
                 for (let i = 0; i < values.length; i++) {
                     const roleId = values[i];
@@ -16,16 +17,17 @@ module.exports = {
 
                     switch(hasRole) {
                         case true:
-                            member.roles.remove(roleId);
+                            member.roles.remove(role);
                             break;
                         case false:
-                            member.roles.add(roleId);
+                            member.roles.add(role);
                             break;
                     }
                 }
 
                 interaction.reply({ content: '<:si:1089275579221676035>  Tus roles han sido actualizados!', ephemeral: true});
-                console.log('[', '!'.green, ']', `Se han actualizado los roles de ${member.username}, roles agregados: ${member.roles(roleId)}`);
+                console.log('[', '!'.green, ']', `Se han actualizado los roles de ${interaction.user.tag}`);
+                log.send('[ ! ] ' + `Se han actualizado los roles de ${interaction.user}`)
             }
         } else {
             return;

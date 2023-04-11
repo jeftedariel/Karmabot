@@ -471,5 +471,4 @@ client.login(process.env.TOKEN).then(() => {
 	loadCommands(client);
 })
 
-require(`./Handlers/anti-crash`)(client);
 

@@ -1,10 +1,185 @@
-const {EmbedBuilder, SlashCommandBuilder, PermissionFlagsBits} = require('discord.js');
-const warningSchema = require('../../Models/Warning');
+const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
+const warningSchema = require("../../Models/Warn");
 
 module.exports = {
+    moderatorOnly: true,
     data: new SlashCommandBuilder()
-        .setName('warns')
-        .setDescription('Sistema de Avisos')
-        .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
-        .addSubcommand()
+        .setName("warn")
+        .setDescription("Registrar reportes sobre usuarios.")
+        .setDMPermission(false)
+        .addSubcommand(subcommand =>
+            subcommand.setName("agregar")
+                .setDescription("Agrega un warn a un usuario.")
+                .addUserOption(option =>
+                    option.setName("usuario")
+                        .setDescription("Selecciona al usuario.")
+                        .setRequired(true)
+                )
+                .addStringOption(option =>
+                    option.setName("motivo")
+                        .setDescription("Describe el motivo del warn.")
+                        .setRequired(false)
+                )
+        )
+        .addSubcommand(subcommand =>
+            subcommand.setName("info")
+                .setDescription("Muestra los warns de un usuario.")
+                .addUserOption(option =>
+                    option.setName("usuario")
+                        .setDescription("Selecciona un usuario.")
+                        .setRequired(true)
+                )
+        )
+        .addSubcommand(subcommand =>
+            subcommand.setName("remover")
+                .setDescription("Elimina un warn de un usuario.")
+                .addUserOption(option =>
+                    option.setName("usuario")
+                        .setDescription("Selecciona un usuario.")
+                        .setRequired(true)
+                )
+                .addIntegerOption(option =>
+                    option.setName("id")
+                        .setDescription("Coloca el id del warn.")
+                        .setRequired(false)
+                )
+        )
+        .addSubcommand(subcommand =>
+            subcommand.setName("clear")
+                .setDescription("Elimina todos los warns de un usuario.")
+                .addUserOption(option =>
+                    option.setName("usuario")
+                        .setDescription("Selecciona un usuario.")
+                        .setRequired(true)
+                )
+        ),
+
+    async execute(interaction) {
+        const { options, guildId, user, member } = interaction;
+
+        const sub = options.getSubcommand(["agregar", "info", "remover", "clear"]);
+        const target = options.getUser("usuario");
+        const reason = options.getString("motivo") || "No se especifico un motivo.";
+        const warnId = options.getInteger("id") - 1;
+        const warnDate = new Date(interaction.createdTimestamp).toLocaleDateString();
+
+        const userTag = `${target.username}#${target.discriminator}`;
+
+        const embed = new EmbedBuilder();
+
+        switch (sub) {
+            case "add":
+                warningSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: userTag }, async (err, data) => {
+                    if (err) throw err;
+
+                    if (!data) {
+                        data = new warningSchema({
+                            GuildID: guildId,
+                            UserID: target.id,
+                            UserTag: userTag,
+                            Content: [
+                                {
+                                    ExecuterId: user.id,
+                                    ExecuterTag: user.tag,
+                                    Reason: reason,
+                                    Evidence: evidence,
+                                    Date: warnDate
+                                }
+                            ],
+                        });
+                    } else {
+                        const warnContent = {
+                            ExecuterId: user.id,
+                            ExecuterTag: user.tag,
+                            Reason: reason,
+                            Evidence: evidence,
+                            Date: warnDate
+                        }
+                        data.Content.push(warnContent);
+                    }
+                    data.save();
+
+                        embed.setColor("Orange") 
+                        .setDescription(`Warn agregado a: ${userTag} \n \n **Motivo**: ${reason}`)
+                        .setFooter({ text: member.user.tag, iconURL: member.displayAvatarURL({ dynamic: true }) })
+                        .setTimestamp();
+                        interaction.reply({ embeds: [embed] });
+                });
+
+                break;
+            case "check":
+                warningSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: userTag }, async (err, data) => {
+                    if (err) throw err;
+
+                    if (data) {
+                        embed.setColor("Green")
+                            .setDescription(`${data.Content.map(
+                                (w, i) =>
+                                    `**ID**: ${i + 1}
+                            **Reportado por:**: ${w.ExecuterTag}
+                            **Fecha**: ${w.Date}
+                            **Motivo**: ${w.Reason}\n\n
+                            `
+                            ).join(" ")}`)
+                            .setFooter({ text: member.user.tag, iconURL: member.displayAvatarURL({ dynamic: true }) })
+                            .setTimestamp();
+                            interaction.reply({ embeds: [embed]});
+                    } else {
+                        embed.setColor("Red")
+                            .setDescription(`${userTag} No tiene ningun warn registrado.`)
+                            .setFooter({ text: member.user.tag, iconURL: member.displayAvatarURL({ dynamic: true }) })
+                            .setTimestamp();
+                            interaction.reply({ embeds: [embed]});
+                    }
+                });
+
+                break;
+            case "remove":
+                warningSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: userTag }, async (err, data) => {
+                    if (err) throw err;
+
+                    if (data) {
+                        data.Content.splice(warnId, 1);
+                        data.save();
+
+                        embed.setColor("Green")
+                            .setDescription(`Se removio un warn del usuario ${userTag}, con el id: ${warnId + 1}.`)
+                            .setFooter({ text: member.user.tag, iconURL: member.displayAvatarURL({ dynamic: true }) })
+                            .setTimestamp();
+                            interaction.reply({ embeds: [embed] });
+
+                    } else {
+                        embed.setColor("Red")
+                            .setDescription(`${userTag} No tiene ningun warn registrado.`)
+                            .setFooter({ text: member.user.tag, iconURL: member.displayAvatarURL({ dynamic: true }) })
+                            .setTimestamp();
+                            interaction.reply({ embeds: [embed], ephemeral: true });
+                    }
+                });
+                break;
+            case "clear":
+                warningSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: userTag }, async (err, data) => {
+                    if (err) throw err;
+
+                    if (data) {
+                        await warningSchema.findOneAndDelete({ GuildID: guildId, UserID: target.id, UserTag: userTag });
+
+                        embed.setColor("Blue")
+                            .setDescription(`Se han eliminado todos los warns del usuario ${userTag}.`)
+                            .setFooter({ text: member.user.tag, iconURL: member.displayAvatarURL({ dynamic: true }) })
+                            .setTimestamp();
+
+                        interaction.reply({ embeds: [embed] });
+
+                    } else {
+                        embed.setColor("Red")
+                            .setDescription(`${userTag} No tiene ningun warn registrado.`)
+                            .setFooter({ text: member.user.tag, iconURL: member.displayAvatarURL({ dynamic: true }) })
+                            .setTimestamp();
+                            interaction.reply({ embeds: [embed] });
+                    }
+                });
+                break;
+        }
+    }
 }

@@ -3,6 +3,7 @@
     "@discordjs/opus": "^0.8.0",
     "@discordjs/voice": "^0.14.0",
     "@distube/spotify": "^1.5.1",
+    "@distube/ytdl-core": "^4.11.8",
     "@napi-rs/canvas": "^0.1.34",
     "ascii-table": "^0.0.9",
     "colors": "^1.4.0",
