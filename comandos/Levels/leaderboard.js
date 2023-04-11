@@ -5,9 +5,9 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('top')
 		.setDescription('Muestra el top XP del discord'),
-	async execute(interaction, client) {
+	async execute(interaction) {
 
-        const { guildId } = interaction;
+        const { guildId, client } = interaction;
 
 		const rawLeaderboard = await Levels.fetchLeaderboard(guildId, 10)
 
@@ -17,9 +17,9 @@ module.exports = {
 
 		const leaderboard = await Levels.computeLeaderboard(client, rawLeaderboard, true);
 
-		const lb = leaderboard.map(e => `${e.position}. ${e.username}#${e.discriminator}\n nivel: ${e.level}\n XP: ${e.xp.toLocalString()}.` )
+		const lb = leaderboard.map(e => `<a:xp:1095199505986629714> ${e.position}. ${e.username}#${e.discriminator}\n Nivel: ${e.level}\n XP: ${e.xp}` )
 
-		embed.setTitle('Top Karmafans').setDescription(lb.join('\n\n')).setColor('random').setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
+		embed.setTitle('Top Karmafans').setDescription(lb.join('\n\n')).setColor('Random').setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
 		return interaction.reply({ embeds: [embed]});
 	},
