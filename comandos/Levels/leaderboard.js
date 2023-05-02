@@ -17,7 +17,7 @@ module.exports = {
 
 		const leaderboard = await Levels.computeLeaderboard(client, rawLeaderboard, true);
 
-		const lb = leaderboard.map(e => `<a:xp:1095199505986629714> ${e.position}. ${e.username}#${e.discriminator}\n Nivel: ${e.level}\n XP: ${e.xp}` )
+		const lb = leaderboard.map(e => `<a:xp:1095199505986629714> ${e.position}. ${e.username}\n Nivel: ${e.level}\n XP: ${e.xp}` )
 
 		embed.setTitle('Top Karmafans').setDescription(lb.join('\n\n')).setColor('Random').setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 

@@ -13,14 +13,13 @@ module.exports = {
 
             const Anuncio = new EmbedBuilder()
                 .setColor(0x0099FF)
-                .setTitle('IP y Modpack Java 1.18 \n \n _(SERVIDOR TEMPORAL)_')
-                .setDescription('```temp.karmafans.xyz:40049```')
+                .setTitle('Modpack Survival #1 \n \n _(Modeado 1.12.2)_')
                 .setImage('https://cdn.discordapp.com/attachments/1065028049877348382/1072349024704806932/rgb.gif')
             const Anuncioboton = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
                         .setLabel('Descargar')
-                        .setURL("https://github.com/JEFTEDARIEL123/modpack-1.18/zipball/master/")
+                        .setURL("https://github.com/JEFTEDARIEL123/modpack/zipball/master/")
                         .setStyle(ButtonStyle.Link),
                 ) 
             if (/assddaszxxxxdddcvzxxnopiqn3d45f/i.test(message.content)) {

@@ -28,6 +28,19 @@ module.exports = {
                 interaction.reply({ content: '<:si:1089275579221676035>  Tus roles han sido actualizados!', ephemeral: true});
                 console.log('[', '!'.green, ']', `Se han actualizado los roles de ${interaction.user.tag}`);
                 log.send('[ ! ] ' + `Se han actualizado los roles de ${interaction.user}`)
+            } else if (interaction.isButton()) {
+                const { customId } = interaction;
+                
+                if (customId == 'verify') {
+                    const role = interaction.guild.roles.cache.get('');
+                    return interaction.member.roles.add(role).then((member) =>
+                    interaction.reply({
+                        content: `Se ha asignado el rol ${role}`,
+                        ephemeral: true,
+                    })
+                    );
+                }
+                
             }
         } else {
             return;
