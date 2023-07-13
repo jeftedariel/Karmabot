@@ -44,13 +44,13 @@ module.exports = {
 
             await channel.bulkDelete(filtered).then(messages => {
                 res.setDescription(`Se eliminaron correctamente ${messages.size} mensajes del usuario ${usuario}`);
-                interaction.reply({embeds: [res], ephemeral: true});
+                interaction.reply({embeds: [res]}).then(msg => setTimeout(() => msg.delete(), 10000));
                 console.log('[', '!'.green, ']', `El usuario ${interaction.user.username} eliminó ${messages.size} mensajes del usuario ${usuario} con el /clear`)
             });
         } else {
             await channel.bulkDelete(cantidad, true).then(messages => {
                 res.setDescription(`Se eliminaron correctamente ${messages.size} mensajes`);
-                interaction.reply({embeds: [res], ephemeral: true});
+                interaction.reply({embeds: [res]}).then(msg => setTimeout(() => msg.delete(), 10000));
                 console.log('[', '!'.green, ']', `El usuario ${interaction.user.username} eliminó ${messages.size} mensajes con el /clear`)
             })
         }
