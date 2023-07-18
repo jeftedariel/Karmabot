@@ -24,6 +24,6 @@ module.exports = {
 		embed.setDescription(`El usuario ${member.tag} actualmente es nivel ${levelUser.level} y tiene ${levelUser.xp.toLocaleString()} xp.`)
 			.setColor(0x0099FF).setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
-		return interaction.reply({ embeds: [embed]});
+		return interaction.reply({ embeds: [embed]}).then(msg => setTimeout(() => msg.delete(), 10000));
 	},
 };
