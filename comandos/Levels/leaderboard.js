@@ -21,6 +21,6 @@ module.exports = {
 
 		embed.setTitle('Top Karmafans').setDescription(lb.join('\n\n')).setColor('Random').setFooter({ text: 'Karmafans', iconURL: 'https://cdn.discordapp.com/attachments/1065028049877348382/1065717118974316615/karmaland.png' });
 
-		return interaction.reply({ embeds: [embed]});
+		return interaction.reply({ embeds: [embed]}).then(msg => setTimeout(() => msg.delete(), 10000));
 	},
 };
